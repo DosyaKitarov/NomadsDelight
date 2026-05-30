@@ -37,12 +37,9 @@ public class Nomads_delight {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> ModItems.RAW_HORSE_MEAT.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                // НУРС ТУТ МЕНЯЙ ПОРЯДОК ТАК КАК НАДО
-                output.accept(ModItems.RAW_HORSE_MEAT.get());
-                output.accept(ModItems.KYMYZ_BUCKET.get());
-                output.accept(ModItems.KYMYZ_BOTTLE.get());
-                output.accept(ModItems.ROLLING_PIN.get());
-                output.accept(ModBlocks.CURD_BAG.get());
+                ModItems.ITEMS.getEntries().stream()
+                        .sorted(java.util.Comparator.comparing((net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.item.Item, ? extends net.minecraft.world.item.Item> holder) -> (holder.get() instanceof net.minecraft.world.item.BlockItem) ? 0 : 1).thenComparing(holder -> holder.getId().getPath()))
+                        .forEach(holder -> output.accept(holder.get()));
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.

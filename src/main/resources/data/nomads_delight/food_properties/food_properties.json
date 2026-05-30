@@ -1,6 +1,163 @@
 {
   "raw_horse_meat": {
-    "nutrition": 20,
+    "nutrition": 2,
     "saturation": 0.8
+  },
+  "cooked_horse_meat": {
+    "nutrition": 8,
+    "saturation": 1.6
+  },
+  "talkan_bowl": {
+    "stacksTo": 16,
+    "nutrition": 5,
+    "saturation": 0.8
+  },
+  "beshbarmak": {
+    "stacksTo": 16,
+    "nutrition": 12,
+    "saturation": 1.2
+  },
+  "pilaf": {
+    "stacksTo": 16,
+    "nutrition": 10,
+    "saturation": 1.4
+  },
+  "kuurdak": {
+    "stacksTo": 16,
+    "nutrition": 10,
+    "saturation": 1.2
+  },
+  "manti": {
+    "stacksTo": 16,
+    "nutrition": 11,
+    "saturation": 1.1
+  },
+  "khanum": {
+    "stacksTo": 16,
+    "nutrition": 9,
+    "saturation": 1.3
+  },
+  "dimlama": {
+    "stacksTo": 16,
+    "nutrition": 12,
+    "saturation": 1.1
+  },
+  "laghman": {
+    "stacksTo": 16,
+    "nutrition": 10,
+    "saturation": 1.2
+  },
+  "kazan_kebab": {
+    "stacksTo": 16,
+    "nutrition": 9,
+    "saturation": 1.4
+  },
+  "asip": {
+    "stacksTo": 16,
+    "nutrition": 11,
+    "saturation": 1.3
+  },
+  "raw_kazy": {
+    "nutrition": 3,
+    "saturation": 0.7
+  },
+  "cooked_kazy": {
+    "nutrition": 9,
+    "saturation": 1.5
+  },
+  "qarta": {
+    "nutrition": 8,
+    "saturation": 1.0
+  },
+  "sorpa": {
+    "stacksTo": 16,
+    "nutrition": 6,
+    "saturation": 0.8
+  },
+  "kespe_kozhe": {
+    "stacksTo": 16,
+    "nutrition": 7,
+    "saturation": 1.0
+  },
+  "samsa": {
+    "nutrition": 5,
+    "saturation": 0.8
+  },
+  "chicken_samsa": {
+    "nutrition": 4.5,
+    "saturation": 0.8
+  },
+  "pumpkin_samsa": {
+    "nutrition": 4,
+    "saturation": 1
+  },
+  "peremech": {
+    "nutrition": 5,
+    "saturation": 1
+  },
+  "tandoor_bread": {
+    "nutrition": 6,
+    "saturation": 0.8
+  },
+  "kattama": {
+    "nutrition": 7,
+    "saturation": 1.2
+  },
+  "flatbread": {
+    "nutrition": 5,
+    "saturation": 0.8
+  },
+  "baursaks": {
+    "stacksTo": 16,
+    "nutrition": 5,
+    "saturation": 0.8
+  },
+  "halva": {
+    "nutrition": 4,
+    "saturation": 0.6
+  },
+  "maysok": {
+    "nutrition": 3,
+    "saturation": 0.7
+  },
+  "zhent": {
+    "nutrition": 4,
+    "saturation": 0.8
+  },
+  "qatyq_bucket": {
+    "nutrition": 2,
+    "saturation": 0.6
+  },
+  "qurt": {
+    "nutrition": 3,
+    "saturation": 0.7
+  },
+  "ayran_bucket": {
+    "nutrition": 2,
+    "saturation": 0.6
+  },
+  "maimyzhyk": {
+    "nutrition": 4,
+    "saturation": 0.8
+  },
+  "curd": {
+    "nutrition": 3,
+    "saturation": 0.7
+  },
+  "zharma_bucket": {
+    "nutrition": 2,
+    "saturation": 0.6
+  },
+  "achuchuk_salad": {
+    "nutrition": 3,
+    "saturation": 0.7
+  },
+  "meat_salad": {
+    "nutrition": 4,
+    "saturation": 0.8
+  },
+  "morkovcha": {
+    "nutrition": 3,
+    "saturation": 0.7
   }
 }

@@ -14,7 +14,11 @@ public class ModBlockModelProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        createCurdBag(ModBlocks.CURD_BAG.get());
+        try {
+            createCurdBag(ModBlocks.CURD_BAG.get());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Designer Warning: Skipping block model because texture is missing.");
+        }
     }
 
     private void createCurdBag(Block block) {
