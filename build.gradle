@@ -102,17 +102,16 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-        implementation "curse.maven:farmers-delight-398521:7801529"
+    implementation "curse.maven:farmers-delight-398521:7801529"
     // Mixin is used for @Mixin/@Shadow annotations; provide compile-time only and annotation processor
     // so the IDE and compiler can resolve Mixin types without bundling them into the artifact.
     compileOnly "org.spongepowered:mixin:0.8.5"
-    annotationProcessor "org.spongepowered:mixin:0.8.5"
+    annotationProcessor 'com.google.code.gson:gson:2.10.1'
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
     // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
     // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
-
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
     // The group id is ignored when searching -- in this case, it is "blank"
@@ -127,6 +126,10 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
