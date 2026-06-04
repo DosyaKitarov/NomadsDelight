@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class ModBlocks {
+public class NomadsDelightBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Nomads_delight.MODID);
 
     public static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
@@ -24,7 +24,7 @@ public class ModBlocks {
 
 
     public static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        NomadsDelightItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     // НУРС

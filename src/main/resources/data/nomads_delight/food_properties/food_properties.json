@@ -1,4 +1,8 @@
 {
+  "cottage_cheese": {
+    "nutrition": 1,
+    "saturation": 1
+  },
   "raw_horse_meat": {
     "nutrition": 2,
     "saturation": 0.8
@@ -136,7 +140,7 @@
     "nutrition": 2,
     "saturation": 0.6
   },
-  "maimyzhyk": {
+  "maymyzhyk": {
     "nutrition": 4,
     "saturation": 0.8
   },

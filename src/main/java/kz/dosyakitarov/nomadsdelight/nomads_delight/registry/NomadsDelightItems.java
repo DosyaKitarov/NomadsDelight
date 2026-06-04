@@ -10,7 +10,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-public class ModItems {
+public class NomadsDelightItems {
 
     private static final JsonReader FOODS_JSON =
             new JsonReader("data/nomads_delight/food_properties/food_properties.json");
@@ -19,6 +19,17 @@ public class ModItems {
             new JsonReader("data/nomads_delight/item_properties/item_properties.json");
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Nomads_delight.MODID);
+
+
+    public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .build())));
+
+    public static final DeferredItem<Item> COTTAGE_CHEESE = ITEMS.register("cottage_cheese",
+            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(FOODS_JSON.getNutrition("cottage_cheese"))
+                    .saturationModifier(FOODS_JSON.getSaturation("cottage_cheese"))
+                    .build())));
 
     public static final DeferredItem<Item> RAW_HORSE_MEAT = ITEMS.register("raw_horse_meat",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
@@ -426,11 +437,11 @@ public class ModItems {
             }
     );
 
-    public static final DeferredItem<Item> MAIMYZHYK = ITEMS.register("maimyzhyk",
+    public static final DeferredItem<Item> MAYMYZHYK = ITEMS.register("maymyzhyk",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("maimyzhyk"))
-                            .saturationModifier(FOODS_JSON.getSaturation("maimyzhyk"))
+                            .nutrition(FOODS_JSON.getNutrition("maymyzhyk"))
+                            .saturationModifier(FOODS_JSON.getSaturation("maymyzhyk"))
                             .build())
             ));
 
@@ -447,6 +458,7 @@ public class ModItems {
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("zharma_bucket"))
                             .saturationModifier(FOODS_JSON.getSaturation("zharma_bucket"))
+                            .usingConvertsTo(Items.BUCKET)
                             .build())
             ) {
                 @Override
@@ -466,6 +478,7 @@ public class ModItems {
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("achuchuk_salad"))
                             .saturationModifier(FOODS_JSON.getSaturation("achuchuk_salad"))
+                            .usingConvertsTo(Items.BOWL)
                             .build())
             ));
 
@@ -474,6 +487,7 @@ public class ModItems {
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("meat_salad"))
                             .saturationModifier(FOODS_JSON.getSaturation("meat_salad"))
+                            .usingConvertsTo(Items.BOWL)
                             .build())
             ));
 
@@ -482,6 +496,7 @@ public class ModItems {
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("morkovcha"))
                             .saturationModifier(FOODS_JSON.getSaturation("morkovcha"))
+                            .usingConvertsTo(Items.BOWL)
                             .build())
             ));
 
