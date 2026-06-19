@@ -1,10 +1,13 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 
-import com.mojang.blaze3d.shaders.Effect;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.util.JsonReader;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +19,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class NomadsDelightItems {
@@ -86,6 +90,13 @@ public class NomadsDelightItems {
                 public SoundEvent getEatingSound() {
                     return getDrinkingSound();
                 }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -125,6 +136,13 @@ public class NomadsDelightItems {
                 public SoundEvent getEatingSound() {
                     return getDrinkingSound();
                 }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -162,6 +180,13 @@ public class NomadsDelightItems {
                 public SoundEvent getEatingSound() {
                     return getDrinkingSound();
                 }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -197,6 +222,12 @@ public class NomadsDelightItems {
                     return SoundEvents.GENERIC_DRINK;
                 }
 
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -523,6 +554,13 @@ public class NomadsDelightItems {
                 public SoundEvent getDrinkingSound() {
                     return SoundEvents.HONEY_DRINK;
                 }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
 
     );
@@ -567,6 +605,13 @@ public class NomadsDelightItems {
                 public SoundEvent getDrinkingSound() {
                     return SoundEvents.GENERIC_DRINK;
                 }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 120)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -588,6 +633,7 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> ZHARMA_BUCKET = ITEMS.register("zharma_bucket",
             () -> new Item(new Item.Properties()
+                    .stacksTo(1)
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("zharma_bucket"))
                             .saturationModifier(FOODS_JSON.getSaturation("zharma_bucket"))
@@ -614,6 +660,13 @@ public class NomadsDelightItems {
                 @Override
                 public SoundEvent getDrinkingSound() {
                     return SoundEvents.GENERIC_DRINK;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
                 }
             }
     );
@@ -649,4 +702,16 @@ public class NomadsDelightItems {
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
+
+    private static String getToolTipName(Holder<MobEffect> Effect, int duration) {
+        String[] split = Effect.getRegisteredName().split(":");
+        int minutes = duration / 60;
+        int seconds = duration % 60;
+        String EffectName = split[split.length - 1];
+        if (EffectName != null && !EffectName.isEmpty()) {
+            EffectName = EffectName.substring(0, 1).toUpperCase() + EffectName.substring(1);
+        }
+        return String.format("%s (%d:%02d)", EffectName, minutes, seconds);
+    }
+
 }
