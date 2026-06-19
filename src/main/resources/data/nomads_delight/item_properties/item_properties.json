@@ -1,7 +1,7 @@
 {
   "rolling_pin": {
     "durability": 100,
-    "damage": 4,
+    "damage": 4.0,
     "attack_speed": -2.7
   }
 }

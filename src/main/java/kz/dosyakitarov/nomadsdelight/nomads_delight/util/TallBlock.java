@@ -4,6 +4,7 @@ import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks
 import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,6 +13,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -20,6 +22,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -28,10 +31,12 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 
+import javax.annotation.Nullable;
+
 public class TallBlock extends Block {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final IntegerProperty CHURN_STATE = IntegerProperty.create("churn_state", 0, 2);
-    public static final IntegerProperty MILK_TYPE = IntegerProperty.create("milk_type", 0, 1);
+    public static final IntegerProperty MILK_TYPE = IntegerProperty.create("milk_type", 0, 2);
 
 
     @Override
@@ -43,24 +48,14 @@ public class TallBlock extends Block {
             pos = pos.below();
             state = level.getBlockState(pos);
         }
-        if (currentState == 0 && stack.getItem() == NomadsDelightItems.HORSE_MILK_BUCKET.get()) {
-            if (!level.isClientSide) {
-                if (!player.isCreative()) {
-                    stack.shrink(1);
-                    player.getInventory().placeItemBackInInventory(new ItemStack(Items.BUCKET));
-                }
-                BlockState newState = state
-                        .setValue(CHURN_STATE, 1)
-                        .setValue(MILK_TYPE, milkType);
-                level.setBlock(pos, newState, 3);
+        if (currentState == 0 && (stack.getItem() == NomadsDelightItems.HORSE_MILK_BUCKET.get()
+                || stack.getItem() == NomadsDelightItems.CAMEL_MILK_BUCKET.get()
+                || stack.getItem() == Items.MILK_BUCKET)) {
 
-                level.scheduleTick(pos, this, 48000);
-            }
-            level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-        }
+            milkType = (stack.getItem() == NomadsDelightItems.HORSE_MILK_BUCKET.get()) ? 0 :
+                    (stack.getItem() == NomadsDelightItems.CAMEL_MILK_BUCKET.get()) ? 1 : 2;
 
-        if (currentState == 0 && stack.getItem() == NomadsDelightItems.CAMEL_MILK_BUCKET.get()) {
+
             if (!level.isClientSide) {
                 if (!player.isCreative()) {
                     stack.shrink(1);
@@ -71,31 +66,40 @@ public class TallBlock extends Block {
                         .setValue(CHURN_STATE, 1)
                         .setValue(MILK_TYPE, milkType);
                 level.setBlock(pos, newState, 3);
-
-                level.scheduleTick(pos, this, 48000);
+                level.scheduleTick(pos, this, 100);
             }
+
             level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
+
         }
 
-        if (currentState == 2 && stack.getItem() == Items.BUCKET) {
-
-            if (milkType == 1) {
-                if (!level.isClientSide) {
-                    stack.shrink(1);
-                    player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.QUMYZ_BUCKET.get()));
+        if (currentState == 2) {
+            if (stack.getItem() == Items.BUCKET) {
+                if (milkType == 1) {
+                    if (!level.isClientSide) {
+                        stack.shrink(1);
+                        player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.QUMYZ_BUCKET.get()));
+                    }
+                    level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
+                } else if (milkType == 2) {
+                    if (!level.isClientSide) {
+                        stack.shrink(1);
+                        player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.SHUBAT_BUCKET.get()));
+                    }
+                    level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
                 }
                 level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
-            if (!level.isClientSide) {
-                stack.shrink(1);
-                player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.SHUBAT_BUCKET.get()));
+            if (milkType == 2) {
+                if (!level.isClientSide) {
+                    player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.BUTTER.get()));
+                }
+                level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
+                level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
+                return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
-            level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
-            level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
-
         }
         return ItemInteractionResult.SUCCESS;
     }
@@ -175,6 +179,10 @@ public class TallBlock extends Block {
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         if (!level.isClientSide) {
+            if (state.getValue(HALF) == DoubleBlockHalf.LOWER && !player.isCreative()) {
+                Block.popResource(level, pos, new ItemStack(this));
+            }
+
             DoubleBlockHalf half = state.getValue(HALF);
             BlockPos otherPos = half == DoubleBlockHalf.LOWER ? pos.above() : pos.below();
             BlockState otherState = level.getBlockState(otherPos);
@@ -193,17 +201,16 @@ public class TallBlock extends Block {
         return new ItemStack(this);
     }
 
+
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-            super.onRemove(state, level, pos, newState, isMoving);
-            return;
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextFloat() < 0.25F) {
+            if (level.isClientSide() && state.getValue(CHURN_STATE) == 2) {
+                double x = pos.getX() + random.nextDouble();
+                double y = pos.getY() - 0.05;
+                double z = pos.getZ() + random.nextDouble();
+                level.addParticle(ParticleTypes.FALLING_WATER, x, y, z, 0.0, 0.0, 0.0);
+            }
         }
-
-        if (!state.is(newState.getBlock())) {
-            Block.popResource(level, pos, new ItemStack(NomadsDelightBlocks.CHURN.get()));
-        }
-
-        super.onRemove(state, level, pos, newState, isMoving);
     }
 }

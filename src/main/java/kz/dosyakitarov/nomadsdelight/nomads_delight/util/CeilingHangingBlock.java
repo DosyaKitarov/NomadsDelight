@@ -4,6 +4,7 @@ import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks
 import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,12 +20,15 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import javax.annotation.Nullable;
 
 public class CeilingHangingBlock extends Block {
     //Нурс когда сделаешь модель для калташа надо тут подправить, пока что стоит форма фонаря для тестов
@@ -107,15 +111,29 @@ public class CeilingHangingBlock extends Block {
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (!state.is(newState.getBlock())) {
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity te, ItemStack stack) {
+        // Only drop items if the player is NOT in Creative mode
+        if (!player.isCreative()) {
             int currentState = state.getValue(BAG_STATE);
             if (currentState == 2) {
                 Block.popResource(level, pos, new ItemStack(NomadsDelightItems.COTTAGE_CHEESE.get()));
             }
             Block.popResource(level, pos, new ItemStack(NomadsDelightBlocks.CURD_BAG.get()));
-
         }
 
+        // Call super to ensure the block is actually removed from the world
+        super.playerDestroy(level, player, pos, state, te, stack);
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextFloat() < 0.25F) {
+            if (level.isClientSide() && state.getValue(BAG_STATE) == 1) {
+                double x = pos.getX() + random.nextDouble();
+                double y = pos.getY() - 0.05;
+                double z = pos.getZ() + random.nextDouble();
+                level.addParticle(ParticleTypes.FALLING_WATER, x, y, z, 0.0, 0.0, 0.0);
+            }
+        }
     }
 }

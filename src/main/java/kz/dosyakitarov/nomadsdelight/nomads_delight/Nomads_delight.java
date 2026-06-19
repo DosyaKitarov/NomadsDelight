@@ -8,8 +8,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -38,9 +37,17 @@ public class Nomads_delight {
             .icon(() -> NomadsDelightItems.BESHBARMAK.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 NomadsDelightItems.ITEMS.getEntries().stream()
-                        .sorted(java.util.Comparator.comparing((net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.item.Item, ? extends net.minecraft.world.item.Item> holder) -> (holder.get() instanceof net.minecraft.world.item.BlockItem) ? 0 : 1).thenComparing(holder -> holder.getId().getPath()))
+                        .sorted(java.util.Comparator.comparing((DeferredHolder<Item, ? extends Item> holder) -> {
+                            Item item = holder.get();
+                            ItemStack stack = item.getDefaultInstance();
+                            if (item instanceof BlockItem) return 0;
+                            if (stack.has(net.minecraft.core.component.DataComponents.FOOD)) return 1;
+                            if (item instanceof DiggerItem) return 2;
+                            return 3;
+                        }).thenComparing(holder -> holder.getId().getPath()))
                         .forEach(holder -> output.accept(holder.get()));
             }).build());
+
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.

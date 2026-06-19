@@ -9,8 +9,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
+import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.registry.ModSounds;
+import vectorwing.farmersdelight.common.tag.ModTags;
 import vectorwing.farmersdelight.data.builder.CookingPotRecipeBuilder;
 import vectorwing.farmersdelight.data.builder.CuttingBoardRecipeBuilder;
 
@@ -487,7 +490,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
 
         CuttingBoardRecipeBuilder.cuttingRecipe(
                         Ingredient.of(NomadsDelightItems.ROLLED_DOUGH),
-                        Ingredient.of(NomadsDelightItems.ROLLING_PIN),
+                        Ingredient.of(ModTags.KNIVES),
                         NomadsDelightItems.ZHAYMA,
                         1
                 )

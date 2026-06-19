@@ -1,14 +1,22 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 
+import com.mojang.blaze3d.shaders.Effect;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.util.JsonReader;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
+import vectorwing.farmersdelight.common.registry.ModEffects;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class NomadsDelightItems {
 
@@ -52,6 +60,18 @@ public class NomadsDelightItems {
                             .usingConvertsTo(Items.BUCKET)
                             .build()
                     )) {
+
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.removeAllEffects();
+                    }
+
+                    return result;
+                }
+
                 @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
@@ -78,6 +98,20 @@ public class NomadsDelightItems {
                             .build()
                     )) {
                 @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 3600, 0));
+                        if (ThreadLocalRandom.current().nextFloat() < 0.25F) {
+                            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0));
+                        }
+                    }
+
+                    return result;
+                }
+
+                @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
                 }
@@ -102,6 +136,18 @@ public class NomadsDelightItems {
                             .usingConvertsTo(Items.BUCKET)
                             .build()
                     )) {
+
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.removeAllEffects();
+                    }
+
+                    return result;
+                }
+
                 @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
@@ -128,6 +174,20 @@ public class NomadsDelightItems {
                             .build()
                     )) {
                 @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 3600, 0));
+                        if (ThreadLocalRandom.current().nextFloat() < 0.20F) {
+                            entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 900, 0));
+                        }
+                    }
+
+                    return result;
+                }
+
+                @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
                 }
@@ -137,14 +197,10 @@ public class NomadsDelightItems {
                     return SoundEvents.GENERIC_DRINK;
                 }
 
-                @Override
-                public SoundEvent getEatingSound() {
-                    return getDrinkingSound();
-                }
             }
     );
 
-    public static final DeferredItem<Item> ROLLING_PIN = ITEMS.register("rolling_pin",
+    public static final DeferredItem<SwordItem> ROLLING_PIN = ITEMS.register("rolling_pin",
             () -> new SwordItem(
                     Tiers.WOOD,
                     new Item.Properties()
@@ -152,7 +208,7 @@ public class NomadsDelightItems {
                             .attributes(
                                     SwordItem.createAttributes(
                                             Tiers.WOOD,
-                                            ITEMS_JSON.getInt("rolling_pin", "damage"),
+                                            ITEMS_JSON.getFloat("rolling_pin", "damage"),
                                             ITEMS_JSON.getFloat("rolling_pin", "attack_speed")
                                     )
                             )
@@ -448,6 +504,17 @@ public class NomadsDelightItems {
 
             ) {
                 @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.removeAllEffects();
+                    }
+
+                    return result;
+                }
+
+                @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
                 }
@@ -478,6 +545,19 @@ public class NomadsDelightItems {
                             .usingConvertsTo(Items.BUCKET)
                             .build()
                     )) {
+
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 2400, 0));
+
+                    }
+
+                    return result;
+                }
+
                 @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;
@@ -514,6 +594,18 @@ public class NomadsDelightItems {
                             .usingConvertsTo(Items.BUCKET)
                             .build())
             ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 1200, 0));
+
+                    }
+
+                    return result;
+                }
+
                 @Override
                 public UseAnim getUseAnimation(ItemStack stack) {
                     return UseAnim.DRINK;

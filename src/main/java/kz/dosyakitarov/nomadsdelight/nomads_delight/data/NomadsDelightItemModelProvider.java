@@ -12,7 +12,7 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        tryBasicItem(NomadsDelightItems.ROLLING_PIN.get());
+        tryHandheldItem(NomadsDelightItems.ROLLING_PIN.get());
         tryBasicItem(NomadsDelightItems.QUMYZ_BUCKET.get());
         tryBasicItem(NomadsDelightItems.HORSE_MILK_BUCKET.get());
         tryBasicItem(NomadsDelightItems.SHUBAT_BUCKET.get());
@@ -78,4 +78,16 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
             System.err.println("Warning: Skipping model for " + item.toString() + " because texture is missing.");
         }
     }
+
+    private void tryHandheldItem(net.minecraft.world.item.Item item) {
+        try {
+            String path = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(item).getPath();
+            withExistingParent(path, mcLoc("item/handheld"))
+                    .texture("layer0", modLoc("item/" + path));
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("Warning: Skipping model for " + item.toString() + " because texture is missing.");
+        }
+    }
+
 }
