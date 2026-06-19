@@ -69,7 +69,7 @@ public class NomadsDelightItems {
             }
     );
 
-    public static final DeferredItem<Item> KYMYZ_BUCKET = ITEMS.register("kymyz_bucket",
+    public static final DeferredItem<Item> QUMYZ_BUCKET = ITEMS.register("qumyz_bucket",
             () -> new Item(new Item.Properties()
                     .stacksTo(1)
                     .food(new FoodProperties.Builder()
@@ -179,12 +179,12 @@ public class NomadsDelightItems {
             () -> new Item(new Item.Properties()
             ));
 
-    public static final DeferredItem<Item> TALKAN_BOWL = ITEMS.register("talkan_bowl",
+    public static final DeferredItem<Item> READY_MADE_TALKAN = ITEMS.register("ready_made_talkan",
             () -> new Item(new Item.Properties()
-                    .stacksTo(FOODS_JSON.getInt("talkan_bowl", "stacksTo"))
+                    .stacksTo(FOODS_JSON.getInt("ready_made_talkan", "stacksTo"))
                     .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("talkan_bowl"))
-                            .saturationModifier(FOODS_JSON.getSaturation("talkan_bowl"))
+                            .nutrition(FOODS_JSON.getNutrition("ready_made_talkan"))
+                            .saturationModifier(FOODS_JSON.getSaturation("ready_made_talkan"))
                             .usingConvertsTo(Items.BOWL)
                             .build()
                     )) {
@@ -438,7 +438,9 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> QATYQ_BUCKET = ITEMS.register("qatyq_bucket",
             () -> new Item(new Item.Properties()
+                    .stacksTo(1)
                     .food(new FoodProperties.Builder()
+                            .alwaysEdible()
                             .usingConvertsTo(Items.BUCKET)
                             .nutrition(FOODS_JSON.getNutrition("qatyq_bucket"))
                             .saturationModifier(FOODS_JSON.getSaturation("qatyq_bucket"))
@@ -470,6 +472,7 @@ public class NomadsDelightItems {
             () -> new Item(new Item.Properties()
                     .stacksTo(1)
                     .food(new FoodProperties.Builder()
+                            .alwaysEdible()
                             .nutrition(FOODS_JSON.getNutrition("ayran_bucket"))
                             .saturationModifier(FOODS_JSON.getSaturation("ayran_bucket"))
                             .usingConvertsTo(Items.BUCKET)
@@ -482,7 +485,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public SoundEvent getDrinkingSound() {
-                    return SoundEvents.HONEY_DRINK;
+                    return SoundEvents.GENERIC_DRINK;
                 }
             }
     );
@@ -518,7 +521,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public SoundEvent getDrinkingSound() {
-                    return SoundEvents.HONEY_DRINK;
+                    return SoundEvents.GENERIC_DRINK;
                 }
             }
     );

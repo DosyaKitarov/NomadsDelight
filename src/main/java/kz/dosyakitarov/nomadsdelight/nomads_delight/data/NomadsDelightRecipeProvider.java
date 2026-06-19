@@ -142,7 +142,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 Items.HONEY_BOTTLE
         );
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.TALKAN_BOWL)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.READY_MADE_TALKAN)
                 .requires(NomadsDelightItems.TALKAN)
                 .requires(sweetForTalkan)
                 .requires(Items.MILK_BUCKET)

@@ -14,7 +14,8 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup.nomads_delight", "Nomad's Delight");
         add(NomadsDelightBlocks.CURD_BAG.get(), "Curd Bag");
-        add(NomadsDelightItems.KYMYZ_BUCKET.get(), "Kymyz Bucket");
+        add(NomadsDelightBlocks.CHURN.get(), "Churn");
+        add(NomadsDelightItems.QUMYZ_BUCKET.get(), "Qumyz Bucket");
         add(NomadsDelightItems.HORSE_MILK_BUCKET.get(), "Horse Milk Bucket");
         add(NomadsDelightItems.SHUBAT_BUCKET.get(), "Shubat Bucket");
         add(NomadsDelightItems.CAMEL_MILK_BUCKET.get(), "Camel Milk Bucket");
@@ -28,7 +29,7 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.ROASTED_MILLET.get(), "Roasted Millet");
         add(NomadsDelightItems.HORSE_INTESTINES.get(), "Horse Intestines");
         add(NomadsDelightItems.TALKAN.get(), "Talkan");
-        add(NomadsDelightItems.TALKAN_BOWL.get(), "Talkan Bowl");
+        add(NomadsDelightItems.READY_MADE_TALKAN.get(), "Ready Made Talkan");
         add(NomadsDelightItems.BESHBARMAK.get(), "Beshbarmak");
         add(NomadsDelightItems.PILAF.get(), "Pilaf");
         add(NomadsDelightItems.KUURDAK.get(), "Kuurdak");

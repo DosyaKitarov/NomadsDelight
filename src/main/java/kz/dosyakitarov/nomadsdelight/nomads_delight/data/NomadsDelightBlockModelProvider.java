@@ -2,6 +2,7 @@ package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
 
 import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
@@ -14,18 +15,25 @@ public class NomadsDelightBlockModelProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        try {
-            createCurdBag(NomadsDelightBlocks.CURD_BAG.get());
-        } catch (IllegalArgumentException e) {
-            System.err.println("Designer Warning: Skipping block model because texture is missing.");
-        }
+        tryBasicBlock(NomadsDelightBlocks.CURD_BAG.get());
     }
 
-    private void createCurdBag(Block block) {
-        // Замени lantern на нужный когда закончишь
-        var model = models().withExistingParent("curd_bag", "minecraft:block/lantern");
-        simpleBlock(block, model);
-        simpleBlockItem(block, model);
+//    private void createCurdBag(Block block) {
+//        // Замени lantern на нужный когда закончишь
+//        var model = models().withExistingParent("curd_bag", "minecraft:block/lantern");
+//        simpleBlock(block, model);
+//        simpleBlockItem(block, model);
+//    }
+
+    private void tryBasicBlock(Block block) {
+        try {
+            String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
+            var model = models().cubeAll(name, modLoc("block/" + name));
+            simpleBlock(block, model);
+            simpleBlockItem(block, model);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Warning: Skipping model for block " + block + " because texture is missing.");
+        }
     }
 }
 

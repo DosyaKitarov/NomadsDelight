@@ -12,7 +12,8 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        tryBasicItem(NomadsDelightItems.KYMYZ_BUCKET.get());
+        tryBasicItem(NomadsDelightItems.ROLLING_PIN.get());
+        tryBasicItem(NomadsDelightItems.QUMYZ_BUCKET.get());
         tryBasicItem(NomadsDelightItems.HORSE_MILK_BUCKET.get());
         tryBasicItem(NomadsDelightItems.SHUBAT_BUCKET.get());
         tryBasicItem(NomadsDelightItems.CAMEL_MILK_BUCKET.get());
@@ -20,13 +21,12 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
         tryBasicItem(NomadsDelightItems.COTTAGE_CHEESE.get());
         tryBasicItem(NomadsDelightItems.RAW_HORSE_MEAT.get());
         tryBasicItem(NomadsDelightItems.COOKED_HORSE_MEAT.get());
-        tryBasicItem(NomadsDelightItems.ROLLING_PIN.get());
         tryBasicItem(NomadsDelightItems.ROLLED_DOUGH.get());
         tryBasicItem(NomadsDelightItems.ZHAYMA.get());
         tryBasicItem(NomadsDelightItems.ROASTED_MILLET.get());
         tryBasicItem(NomadsDelightItems.HORSE_INTESTINES.get());
         tryBasicItem(NomadsDelightItems.TALKAN.get());
-        tryBasicItem(NomadsDelightItems.TALKAN_BOWL.get());
+        tryBasicItem(NomadsDelightItems.READY_MADE_TALKAN.get());
         tryBasicItem(NomadsDelightItems.BESHBARMAK.get());
         tryBasicItem(NomadsDelightItems.PILAF.get());
         tryBasicItem(NomadsDelightItems.KUURDAK.get());

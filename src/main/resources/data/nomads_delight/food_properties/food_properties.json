@@ -11,7 +11,7 @@
     "nutrition": 8,
     "saturation": 1.6
   },
-  "talkan_bowl": {
+  "ready_made_talkan": {
     "stacksTo": 16,
     "nutrition": 5,
     "saturation": 0.8
