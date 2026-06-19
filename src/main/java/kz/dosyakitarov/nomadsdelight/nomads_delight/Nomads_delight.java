@@ -35,7 +35,7 @@ public class Nomads_delight {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> NOMADS_DELIGHT_TAB = CREATIVE_MODE_TABS.register("nomads_delight_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.nomads_delight"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> NomadsDelightItems.RAW_HORSE_MEAT.get().getDefaultInstance())
+            .icon(() -> NomadsDelightItems.BESHBARMAK.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 NomadsDelightItems.ITEMS.getEntries().stream()
                         .sorted(java.util.Comparator.comparing((net.neoforged.neoforge.registries.DeferredHolder<net.minecraft.world.item.Item, ? extends net.minecraft.world.item.Item> holder) -> (holder.get() instanceof net.minecraft.world.item.BlockItem) ? 0 : 1).thenComparing(holder -> holder.getId().getPath()))

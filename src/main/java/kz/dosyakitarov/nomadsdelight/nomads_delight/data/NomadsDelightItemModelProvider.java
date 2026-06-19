@@ -13,7 +13,9 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         tryBasicItem(NomadsDelightItems.KYMYZ_BUCKET.get());
-        tryBasicItem(NomadsDelightItems.KYMYZ_BOTTLE.get());
+        tryBasicItem(NomadsDelightItems.HORSE_MILK_BUCKET.get());
+        tryBasicItem(NomadsDelightItems.SHUBAT_BUCKET.get());
+        tryBasicItem(NomadsDelightItems.CAMEL_MILK_BUCKET.get());
         tryBasicItem(NomadsDelightItems.BUTTER.get());
         tryBasicItem(NomadsDelightItems.COTTAGE_CHEESE.get());
         tryBasicItem(NomadsDelightItems.RAW_HORSE_MEAT.get());

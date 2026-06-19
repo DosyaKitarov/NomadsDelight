@@ -15,7 +15,9 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         add("itemGroup.nomads_delight", "Nomad's Delight");
         add(NomadsDelightBlocks.CURD_BAG.get(), "Curd Bag");
         add(NomadsDelightItems.KYMYZ_BUCKET.get(), "Kymyz Bucket");
-        add(NomadsDelightItems.KYMYZ_BOTTLE.get(), "Kymyz Bottle");
+        add(NomadsDelightItems.HORSE_MILK_BUCKET.get(), "Horse Milk Bucket");
+        add(NomadsDelightItems.SHUBAT_BUCKET.get(), "Shubat Bucket");
+        add(NomadsDelightItems.CAMEL_MILK_BUCKET.get(), "Camel Milk Bucket");
         add(NomadsDelightItems.BUTTER.get(), "Butter");
         add(NomadsDelightItems.COTTAGE_CHEESE.get(), "Cottage Cheese");
         add(NomadsDelightItems.RAW_HORSE_MEAT.get(), "Raw Horse Meat");
@@ -59,7 +61,7 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.HALVA.get(), "Halva");
         add(NomadsDelightItems.MAYSOK.get(), "Maysok");
         add(NomadsDelightItems.ZHENT.get(), "Zhent");
-        add(NomadsDelightItems.QATYQ_BUCKET.get(), "Qatiq Bucket");
+        add(NomadsDelightItems.QATYQ_BUCKET.get(), "Qatуq Bucket");
         add(NomadsDelightItems.QURT.get(), "Qurt");
         add(NomadsDelightItems.AYRAN_BUCKET.get(), "Ayran Bucket");
         add(NomadsDelightItems.MAYMYZHYK.get(), "Maymyzhyk");

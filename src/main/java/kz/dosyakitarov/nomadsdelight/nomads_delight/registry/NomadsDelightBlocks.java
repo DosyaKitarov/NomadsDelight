@@ -41,6 +41,7 @@ public class NomadsDelightBlocks {
             )
     );
 
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }

@@ -44,6 +44,31 @@ public class NomadsDelightItems {
                     .build())));
 
 
+    public static final DeferredItem<Item> HORSE_MILK_BUCKET = ITEMS.register("horse_milk_bucket",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(1)
+                    .food(new FoodProperties.Builder()
+                            .alwaysEdible()
+                            .usingConvertsTo(Items.BUCKET)
+                            .build()
+                    )) {
+                @Override
+                public UseAnim getUseAnimation(ItemStack stack) {
+                    return UseAnim.DRINK;
+                }
+
+                @Override
+                public SoundEvent getDrinkingSound() {
+                    return SoundEvents.GENERIC_DRINK;
+                }
+
+                @Override
+                public SoundEvent getEatingSound() {
+                    return getDrinkingSound();
+                }
+            }
+    );
+
     public static final DeferredItem<Item> KYMYZ_BUCKET = ITEMS.register("kymyz_bucket",
             () -> new Item(new Item.Properties()
                     .stacksTo(1)
@@ -67,14 +92,39 @@ public class NomadsDelightItems {
                     return getDrinkingSound();
                 }
             }
-
     );
-    public static final DeferredItem<Item> KYMYZ_BOTTLE = ITEMS.register("kymyz_bottle",
+
+    public static final DeferredItem<Item> CAMEL_MILK_BUCKET = ITEMS.register("camel_milk_bucket",
             () -> new Item(new Item.Properties()
                     .stacksTo(1)
                     .food(new FoodProperties.Builder()
                             .alwaysEdible()
-                            .usingConvertsTo(Items.GLASS_BOTTLE)
+                            .usingConvertsTo(Items.BUCKET)
+                            .build()
+                    )) {
+                @Override
+                public UseAnim getUseAnimation(ItemStack stack) {
+                    return UseAnim.DRINK;
+                }
+
+                @Override
+                public SoundEvent getDrinkingSound() {
+                    return SoundEvents.GENERIC_DRINK;
+                }
+
+                @Override
+                public SoundEvent getEatingSound() {
+                    return getDrinkingSound();
+                }
+            }
+    );
+
+    public static final DeferredItem<Item> SHUBAT_BUCKET = ITEMS.register("shubat_bucket",
+            () -> new Item(new Item.Properties()
+                    .stacksTo(1)
+                    .food(new FoodProperties.Builder()
+                            .alwaysEdible()
+                            .usingConvertsTo(Items.BUCKET)
                             .build()
                     )) {
                 @Override

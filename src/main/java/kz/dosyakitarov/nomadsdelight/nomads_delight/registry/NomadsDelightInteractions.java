@@ -3,6 +3,7 @@ package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,24 +22,35 @@ public class NomadsDelightInteractions {
             if (event.getTarget() instanceof Horse horse) {
                 Player player = event.getEntity();
                 ItemStack itemInHand = player.getItemInHand(event.getHand());
-                if (itemInHand.is(Items.GLASS_BOTTLE)) {
-                    ItemStack bottleOfKymyz = new ItemStack(NomadsDelightItems.KYMYZ_BOTTLE.get());
-
-                    ItemStack filledResult = ItemUtils.createFilledResult(itemInHand, player, bottleOfKymyz);
-                    player.setItemInHand(event.getHand(), filledResult);
-
-                    player.level().playSound(null, horse.blockPosition(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-
-                    event.setCanceled(true);
-                    event.setCancellationResult(InteractionResult.SUCCESS);
-                }
                 if (itemInHand.is(Items.BUCKET)) {
-                    ItemStack bucketOfKymyz = new ItemStack(NomadsDelightItems.KYMYZ_BUCKET.get());
+                    ItemStack bucketOfKymyz = new ItemStack(NomadsDelightItems.HORSE_MILK_BUCKET.get());
 
                     ItemStack filledResult = ItemUtils.createFilledResult(itemInHand, player, bucketOfKymyz);
                     player.setItemInHand(event.getHand(), filledResult);
 
                     player.level().playSound(null, horse.blockPosition(), SoundEvents.COW_MILK, SoundSource.NEUTRAL, 1.0F, 1.0F);
+
+                    event.setCanceled(true);
+                    event.setCancellationResult(InteractionResult.SUCCESS);
+                }
+            }
+
+        }
+    }
+
+    @SubscribeEvent
+    public static void milkCamel(PlayerInteractEvent.EntityInteract event) {
+        if (!event.getLevel().isClientSide()) {
+            if (event.getTarget() instanceof Camel camel) {
+                Player player = event.getEntity();
+                ItemStack itemInHand = player.getItemInHand(event.getHand());
+                if (itemInHand.is(Items.BUCKET)) {
+                    ItemStack bucketOfKymyz = new ItemStack(NomadsDelightItems.CAMEL_MILK_BUCKET.get());
+
+                    ItemStack filledResult = ItemUtils.createFilledResult(itemInHand, player, bucketOfKymyz);
+                    player.setItemInHand(event.getHand(), filledResult);
+
+                    player.level().playSound(null, camel.blockPosition(), SoundEvents.COW_MILK, SoundSource.NEUTRAL, 1.0F, 1.0F);
 
                     event.setCanceled(true);
                     event.setCancellationResult(InteractionResult.SUCCESS);

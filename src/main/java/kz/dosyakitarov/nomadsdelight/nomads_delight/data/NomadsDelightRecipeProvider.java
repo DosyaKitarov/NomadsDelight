@@ -171,9 +171,9 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.AYRAN_BUCKET)
                 .requires(NomadsDelightItems.QATYQ_BUCKET)
-                .requires(Items.POTION)
+                .requires(Items.WATER_BUCKET)
                 .unlockedBy("has_qatyq_bucket", has(NomadsDelightItems.QATYQ_BUCKET))
-                .unlockedBy("has_potion", has(Items.POTION))
+                .unlockedBy("has_water", has(Items.WATER_BUCKET))
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.MAYMYZHYK)
@@ -248,7 +248,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         Items.BOWL
                 )
                 .addIngredient(meatForBeshbarmakPilafAndSorpa)
-                .addIngredient(Items.POTION)
+                .addIngredient(Items.WATER_BUCKET)
                 .addIngredient(Onion)
                 .addIngredient(NomadsDelightItems.ZHAYMA)
                 .unlockedBy("has_zhayma", has(NomadsDelightItems.ZHAYMA))
@@ -256,7 +256,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_beef", has(Items.BEEF))
                 .unlockedBy("has_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
                 .unlockedBy("has_kazy", has(NomadsDelightItems.RAW_KAZY))
-                .unlockedBy("has_potion", has(Items.POTION))
+                .unlockedBy("has_water", has(Items.WATER_BUCKET))
                 .unlockedBy("has_onion", has(Onion))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
