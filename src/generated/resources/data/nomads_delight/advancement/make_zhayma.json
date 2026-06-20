@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:make_rolling_pin",
+  "criteria": {
+    "has_zhayma": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:zhayma"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_zhayma.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:zhayma"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_zhayma.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_zhayma"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

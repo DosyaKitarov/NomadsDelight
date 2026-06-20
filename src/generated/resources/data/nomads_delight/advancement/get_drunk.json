@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:make_shubat_or_qymyz",
+  "criteria": {
+    "has_confusion": {
+      "conditions": {
+        "effects": {
+          "minecraft:nausea": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.get_drunk.description"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:qumyz_bucket"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.get_drunk.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_confusion"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -11,12 +11,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -149,6 +151,13 @@ public class Nomads_delight {
         generator.addProvider(event.includeServer(),
                 new NomadsDelightLootTableProvider(generator.getPackOutput(), lookupProvider));
 
+        generator.addProvider(event.includeServer(),
+                new AdvancementProvider(
+                        generator.getPackOutput(),
+                        lookupProvider,
+                        event.getExistingFileHelper(),
+                        List.of(new NomadsDelightAdvancementProvider()) // Pass your list of sub-providers here
+                ));
 
     }
 }

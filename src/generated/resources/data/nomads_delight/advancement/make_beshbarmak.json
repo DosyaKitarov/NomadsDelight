@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:make_zhayma",
+  "criteria": {
+    "has_beshbarmak": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:beshbarmak"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_beshbarmak.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:beshbarmak"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_beshbarmak.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_beshbarmak"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

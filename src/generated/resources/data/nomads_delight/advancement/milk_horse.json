@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_horse_milk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:horse_milk_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.milk_horse.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:horse_milk_bucket"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.milk_horse.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_horse_milk"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

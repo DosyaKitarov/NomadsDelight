@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:make_churn",
+  "criteria": {
+    "has_butter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:butter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_butter.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:butter"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_butter.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_butter"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

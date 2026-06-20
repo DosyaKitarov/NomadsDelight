@@ -1,0 +1,77 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_baursaks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:baursaks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_halva": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:halva"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_maysok": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:maysok"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_qurt": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:qurt"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_zhent": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:zhent"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_any_snack.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:baursaks"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_any_snack.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_baursaks",
+      "has_halva",
+      "has_maysok",
+      "has_zhent",
+      "has_qurt"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

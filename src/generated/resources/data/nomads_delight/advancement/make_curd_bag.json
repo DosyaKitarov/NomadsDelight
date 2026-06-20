@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_curd_bag": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:curd_bag"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_curd_bag.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:curd_bag"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_curd_bag.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_curd_bag"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_churn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:churn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_churn.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:churn"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_churn.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_churn"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

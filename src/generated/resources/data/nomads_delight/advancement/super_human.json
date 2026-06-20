@@ -1,0 +1,494 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "consume_achuchuk_salad": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:achuchuk_salad"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_asip": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:asip"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_ayran": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:ayran_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_baursaks": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:baursaks"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_beshbarmak": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:beshbarmak"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_butter": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:butter"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_camel_milk": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:camel_milk_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_chicken_samsa": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:chicken_samsa"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_cooked_horse_meat": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:cooked_horse_meat"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_cooked_kazy": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:cooked_kazy"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_cottage_cheese": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:cottage_cheese"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_curd": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:curd"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_dimlama": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:dimlama"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_flatbread": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:flatbread"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_halva": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:halva"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_horse_milk": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:horse_milk_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_kattama": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kattama"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_kazan_kebab": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kazan_kebab"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_kespe_kozhe": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kespe_kozhe"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_khanum": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:khanum"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_kuurdak": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kuurdak"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_laghman": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:laghman"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_manti": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:manti"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_maymyzhyk": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:maymyzhyk"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_maysok": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:maysok"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_meat_salad": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:meat_salad"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_morkovcha": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:morkovcha"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_peremech": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:peremech"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_pilaf": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:pilaf"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_pumpkin_samsa": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:pumpkin_samsa"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_qarta": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:qarta"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_qatyq": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:qatyq_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_qumyz": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:qumyz_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_qurt": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:qurt"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_raw_horse_meat": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:raw_horse_meat"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_raw_kazy": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:raw_kazy"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_ready_made_talkan": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:ready_made_talkan"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_samsa": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:samsa"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_shubat": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:shubat_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_sorpa": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:sorpa"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_tandoor_bread": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:tandoor_bread"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_zharma": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:zharma_bucket"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_zhent": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:zhent"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.super_human.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:qumyz_bucket"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.super_human.title"
+    }
+  },
+  "requirements": [
+    [
+      "consume_horse_milk"
+    ],
+    [
+      "consume_qumyz"
+    ],
+    [
+      "consume_camel_milk"
+    ],
+    [
+      "consume_shubat"
+    ],
+    [
+      "consume_sorpa"
+    ],
+    [
+      "consume_kespe_kozhe"
+    ],
+    [
+      "consume_qatyq"
+    ],
+    [
+      "consume_ayran"
+    ],
+    [
+      "consume_zharma"
+    ],
+    [
+      "consume_beshbarmak"
+    ],
+    [
+      "consume_pilaf"
+    ],
+    [
+      "consume_kuurdak"
+    ],
+    [
+      "consume_manti"
+    ],
+    [
+      "consume_khanum"
+    ],
+    [
+      "consume_dimlama"
+    ],
+    [
+      "consume_laghman"
+    ],
+    [
+      "consume_kazan_kebab"
+    ],
+    [
+      "consume_asip"
+    ],
+    [
+      "consume_cooked_horse_meat"
+    ],
+    [
+      "consume_cooked_kazy"
+    ],
+    [
+      "consume_qarta"
+    ],
+    [
+      "consume_samsa"
+    ],
+    [
+      "consume_chicken_samsa"
+    ],
+    [
+      "consume_pumpkin_samsa"
+    ],
+    [
+      "consume_peremech"
+    ],
+    [
+      "consume_tandoor_bread"
+    ],
+    [
+      "consume_kattama"
+    ],
+    [
+      "consume_flatbread"
+    ],
+    [
+      "consume_baursaks"
+    ],
+    [
+      "consume_butter"
+    ],
+    [
+      "consume_cottage_cheese"
+    ],
+    [
+      "consume_curd"
+    ],
+    [
+      "consume_qurt"
+    ],
+    [
+      "consume_achuchuk_salad"
+    ],
+    [
+      "consume_meat_salad"
+    ],
+    [
+      "consume_morkovcha"
+    ],
+    [
+      "consume_ready_made_talkan"
+    ],
+    [
+      "consume_halva"
+    ],
+    [
+      "consume_maysok"
+    ],
+    [
+      "consume_zhent"
+    ],
+    [
+      "consume_maymyzhyk"
+    ],
+    [
+      "consume_raw_horse_meat"
+    ],
+    [
+      "consume_raw_kazy"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

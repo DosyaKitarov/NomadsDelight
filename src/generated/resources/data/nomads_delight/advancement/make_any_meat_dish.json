@@ -1,0 +1,110 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_asip": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:asip"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cooked_horse_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:cooked_horse_meat"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_cooked_kazy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:cooked_kazy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dimlama": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:dimlama"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_kazan_kebab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:kazan_kebab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_kuurdak": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:kuurdak"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_qarta": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:qarta"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_sorpa": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:sorpa"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_any_meat_dish.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:kazan_kebab"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_any_meat_dish.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_cooked_horse_meat",
+      "has_kuurdak",
+      "has_dimlama",
+      "has_kazan_kebab",
+      "has_sorpa",
+      "has_asip",
+      "has_cooked_kazy",
+      "has_qarta"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

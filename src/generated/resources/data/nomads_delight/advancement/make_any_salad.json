@@ -1,0 +1,55 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_achuchuk_salad": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:achuchuk_salad"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_meat_salad": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:meat_salad"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_morkovcha": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:morkovcha"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_any_salad.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:achuchuk_salad"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_any_salad.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_achuchuk_salad",
+      "has_meat_salad",
+      "has_morkovcha"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

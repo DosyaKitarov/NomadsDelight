@@ -79,7 +79,7 @@ public class TallBlock extends Block {
                     level.setBlock(upperPos, newUpperState, 3);
                 }
 
-                level.scheduleTick(lowerPos, this, 100);
+                level.scheduleTick(lowerPos, this, 12000);
             }
 
             level.playSound(null, lowerPos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);

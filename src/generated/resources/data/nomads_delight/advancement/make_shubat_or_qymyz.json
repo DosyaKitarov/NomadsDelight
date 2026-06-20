@@ -1,0 +1,44 @@
+{
+  "parent": "nomads_delight:make_churn",
+  "criteria": {
+    "has_qymyz": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:qumyz_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shubat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:shubat_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_shubat_or_qymyz.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:qumyz_bucket"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_shubat_or_qymyz.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_qymyz",
+      "has_shubat"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

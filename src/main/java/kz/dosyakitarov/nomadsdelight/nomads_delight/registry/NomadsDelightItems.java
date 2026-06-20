@@ -1,5 +1,6 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 
+import com.mojang.blaze3d.shaders.Effect;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.util.JsonReader;
 import net.minecraft.ChatFormatting;
@@ -41,7 +42,25 @@ public class NomadsDelightItems {
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(FOODS_JSON.getNutrition("cottage_cheese"))
                     .saturationModifier(FOODS_JSON.getSaturation("cottage_cheese"))
-                    .build())));
+                    .build())) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_HORSE_MEAT = ITEMS.register("raw_horse_meat",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
@@ -275,6 +294,23 @@ public class NomadsDelightItems {
                             .usingConvertsTo(Items.BOWL)
                             .build()
                     )) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
             }
     );
 
@@ -285,7 +321,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("beshbarmak"))
                             .saturationModifier(FOODS_JSON.getSaturation("beshbarmak"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 6000, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 300)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> PILAF = ITEMS.register("pilaf",
             () -> new Item(new Item.Properties()
@@ -294,7 +348,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("pilaf"))
                             .saturationModifier(FOODS_JSON.getSaturation("pilaf"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> KUURDAK = ITEMS.register("kuurdak",
             () -> new Item(new Item.Properties()
@@ -303,7 +375,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("kuurdak"))
                             .saturationModifier(FOODS_JSON.getSaturation("kuurdak"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 6000, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
 
     public static final DeferredItem<Item> MANTI = ITEMS.register("manti",
@@ -313,7 +403,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("manti"))
                             .saturationModifier(FOODS_JSON.getSaturation("manti"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> KHANUM = ITEMS.register("khanum",
             () -> new Item(new Item.Properties()
@@ -322,7 +430,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("khanum"))
                             .saturationModifier(FOODS_JSON.getSaturation("khanum"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> DIMLAMA = ITEMS.register("dimlama",
             () -> new Item(new Item.Properties()
@@ -331,7 +457,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("dimlama"))
                             .saturationModifier(FOODS_JSON.getSaturation("dimlama"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 6000, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> LAGHMAN = ITEMS.register("laghman",
             () -> new Item(new Item.Properties()
@@ -340,7 +484,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("laghman"))
                             .saturationModifier(FOODS_JSON.getSaturation("laghman"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> KAZAN_KEBAB = ITEMS.register("kazan_kebab",
             () -> new Item(new Item.Properties()
@@ -349,7 +511,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("kazan_kebab"))
                             .saturationModifier(FOODS_JSON.getSaturation("kazan_kebab"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> ASIP = ITEMS.register("asip",
             () -> new Item(new Item.Properties()
@@ -358,7 +538,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("asip"))
                             .saturationModifier(FOODS_JSON.getSaturation("asip"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_KAZY = ITEMS.register("raw_kazy",
             () -> new Item(new Item.Properties()
@@ -374,7 +572,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("cooked_kazy"))
                             .saturationModifier(FOODS_JSON.getSaturation("cooked_kazy"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> QARTA = ITEMS.register("qarta",
             () -> new Item(new Item.Properties()
@@ -382,7 +598,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("qarta"))
                             .saturationModifier(FOODS_JSON.getSaturation("qarta"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> SORPA = ITEMS.register("sorpa",
             () -> new Item(new Item.Properties()
@@ -391,7 +625,26 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("sorpa"))
                             .saturationModifier(FOODS_JSON.getSaturation("sorpa"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
+
     public static final DeferredItem<Item> KESPE_KOZHE = ITEMS.register("kespe_kozhe",
             () -> new Item(new Item.Properties()
                     .stacksTo(FOODS_JSON.getInt("kespe_kozhe", "stacksTo"))
@@ -399,7 +652,26 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("kespe_kozhe"))
                             .saturationModifier(FOODS_JSON.getSaturation("kespe_kozhe"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 3600, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
+
     public static final DeferredItem<Item> RAW_SAMSA = ITEMS.register("raw_samsa",
             () -> new Item(new Item.Properties()
             ));
@@ -410,7 +682,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("samsa"))
                             .saturationModifier(FOODS_JSON.getSaturation("samsa"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
     public static final DeferredItem<Item> RAW_CHICKEN_SAMSA = ITEMS.register("raw_chicken_samsa",
             () -> new Item(new Item.Properties()
             ));
@@ -421,7 +711,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("chicken_samsa"))
                             .saturationModifier(FOODS_JSON.getSaturation("chicken_samsa"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_PUMPKIN_SAMSA = ITEMS.register("raw_pumpkin_samsa",
             () -> new Item(new Item.Properties()
@@ -434,7 +742,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("pumpkin_samsa"))
                             .saturationModifier(FOODS_JSON.getSaturation("pumpkin_samsa"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
 
     public static final DeferredItem<Item> RAW_PEREMECH = ITEMS.register("raw_peremech",
@@ -447,7 +773,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("peremech"))
                             .saturationModifier(FOODS_JSON.getSaturation("peremech"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_TANDOOR_BREAD = ITEMS.register("raw_tandoor_bread",
             () -> new Item(new Item.Properties()
@@ -459,7 +803,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("tandoor_bread"))
                             .saturationModifier(FOODS_JSON.getSaturation("tandoor_bread"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_KATTAMA = ITEMS.register("raw_kattama",
             () -> new Item(new Item.Properties()
@@ -472,7 +834,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("kattama"))
                             .saturationModifier(FOODS_JSON.getSaturation("kattama"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_FLATBREAD = ITEMS.register("raw_flatbread",
             () -> new Item(new Item.Properties()
@@ -484,7 +864,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("flatbread"))
                             .saturationModifier(FOODS_JSON.getSaturation("flatbread"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> RAW_BAURSAKS = ITEMS.register("raw_baursaks",
             () -> new Item(new Item.Properties()
@@ -497,7 +895,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("baursaks"))
                             .saturationModifier(FOODS_JSON.getSaturation("baursaks"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> HALVA = ITEMS.register("halva",
             () -> new Item(new Item.Properties()
@@ -505,7 +921,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("halva"))
                             .saturationModifier(FOODS_JSON.getSaturation("halva"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> MAYSOK = ITEMS.register("maysok",
             () -> new Item(new Item.Properties()
@@ -513,7 +947,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("maysok"))
                             .saturationModifier(FOODS_JSON.getSaturation("maysok"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> ZHENT = ITEMS.register("zhent",
             () -> new Item(new Item.Properties()
@@ -521,7 +973,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("zhent"))
                             .saturationModifier(FOODS_JSON.getSaturation("zhent"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> QATYQ_BUCKET = ITEMS.register("qatyq_bucket",
             () -> new Item(new Item.Properties()
@@ -571,7 +1041,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("qurt"))
                             .saturationModifier(FOODS_JSON.getSaturation("qurt"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> AYRAN_BUCKET = ITEMS.register("ayran_bucket",
             () -> new Item(new Item.Properties()
@@ -621,7 +1109,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("maymyzhyk"))
                             .saturationModifier(FOODS_JSON.getSaturation("maymyzhyk"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> CURD = ITEMS.register("curd",
             () -> new Item(new Item.Properties()
@@ -629,7 +1135,25 @@ public class NomadsDelightItems {
                             .nutrition(FOODS_JSON.getNutrition("curd"))
                             .saturationModifier(FOODS_JSON.getSaturation("curd"))
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> ZHARMA_BUCKET = ITEMS.register("zharma_bucket",
             () -> new Item(new Item.Properties()
@@ -678,7 +1202,27 @@ public class NomadsDelightItems {
                             .saturationModifier(FOODS_JSON.getSaturation("achuchuk_salad"))
                             .usingConvertsTo(Items.BOWL)
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> MEAT_SALAD = ITEMS.register("meat_salad",
             () -> new Item(new Item.Properties()
@@ -687,7 +1231,27 @@ public class NomadsDelightItems {
                             .saturationModifier(FOODS_JSON.getSaturation("meat_salad"))
                             .usingConvertsTo(Items.BOWL)
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
     public static final DeferredItem<Item> MORKOVCHA = ITEMS.register("morkovcha",
             () -> new Item(new Item.Properties()
@@ -696,7 +1260,27 @@ public class NomadsDelightItems {
                             .saturationModifier(FOODS_JSON.getSaturation("morkovcha"))
                             .usingConvertsTo(Items.BOWL)
                             .build())
-            ));
+            ) {
+                @Override
+                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
+                    ItemStack result = super.finishUsingItem(stack, level, entity);
+
+                    if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                        entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
+                    }
+
+                    return result;
+                }
+
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+
+                    super.appendHoverText(stack, context, tooltip, flag);
+                }
+            });
 
 
     public static void register(IEventBus eventBus) {

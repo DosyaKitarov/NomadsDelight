@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_camel_milk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:camel_milk_bucket"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.milk_camel.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:camel_milk_bucket"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.milk_camel.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_camel_milk"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

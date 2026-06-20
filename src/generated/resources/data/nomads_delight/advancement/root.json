@@ -1,0 +1,55 @@
+{
+  "criteria": {
+    "has_churn": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:churn"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_curd_bag": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:curd_bag"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rolling_pin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:rolling_pin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "nomads_delight:textures/block/green_grass.png",
+    "description": {
+      "translate": "advancements.nomads_delight.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:beshbarmak"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_curd_bag",
+      "has_churn",
+      "has_rolling_pin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

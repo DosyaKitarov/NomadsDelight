@@ -1,0 +1,33 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "has_rolling_pin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:rolling_pin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.make_rolling_pin.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:rolling_pin"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.make_rolling_pin.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rolling_pin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

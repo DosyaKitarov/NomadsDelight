@@ -1,5 +1,10 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 
+import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomadsdelight.nomads_delight.data.NomadsDelightAdvancementProvider;
+import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -11,6 +16,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
 @EventBusSubscriber(modid = "nomads_delight")
@@ -57,6 +63,30 @@ public class NomadsDelightInteractions {
                 }
             }
 
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBonk(LivingDeathEvent event) {
+        if (event.getEntity().level().isClientSide()) {
+            return;
+        }
+
+        if (event.getSource().getEntity() instanceof ServerPlayer player) {
+            ItemStack weapon = player.getMainHandItem();
+            if (weapon.is(NomadsDelightItems.ROLLING_PIN.get())) {
+                var server = player.getServer();
+                if (server == null) {
+                    return;
+                }
+
+                AdvancementHolder bonk = server.getAdvancements()
+                        .get(ResourceLocation.fromNamespaceAndPath(Nomads_delight.MODID, "bonk"));
+
+                if (bonk != null) {
+                    player.getAdvancements().award(bonk, NomadsDelightAdvancementProvider.BONK_CRITERION);
+                }
+            }
         }
     }
 }
