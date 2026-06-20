@@ -1,0 +1,65 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_beef_patty": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:beef_patty"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:wheat_dough"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_onion": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:onion"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_pumpkin_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:pumpkin_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:cooking/khanum"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_onion",
+      "has_dough",
+      "has_beef_patty",
+      "has_pumpkin_slice"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:cooking/khanum"
+    ]
+  }
+}

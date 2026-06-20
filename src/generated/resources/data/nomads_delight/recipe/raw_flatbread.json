@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "R": {
+      "item": "nomads_delight:rolled_dough"
+    }
+  },
+  "pattern": [
+    "RR"
+  ],
+  "result": {
+    "count": 2,
+    "id": "nomads_delight:raw_flatbread"
+  }
+}

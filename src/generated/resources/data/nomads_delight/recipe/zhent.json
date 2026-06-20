@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nomads_delight:talkan"
+    },
+    [
+      {
+        "item": "minecraft:sugar"
+      },
+      {
+        "item": "minecraft:honey_bottle"
+      }
+    ],
+    {
+      "item": "nomads_delight:butter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nomads_delight:zhent"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:wheat_dough"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mutton"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:raw_peremech"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dough",
+      "has_meat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:raw_peremech"
+    ]
+  }
+}

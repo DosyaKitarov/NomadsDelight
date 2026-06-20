@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "nomads_delight:item/horse_milk_bucket"
+  }
+}

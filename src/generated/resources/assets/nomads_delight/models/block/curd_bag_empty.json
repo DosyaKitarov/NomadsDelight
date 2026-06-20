@@ -1,0 +1,7 @@
+{
+  "parent": "nomads_delight:block/curd_bag_base",
+  "textures": {
+    "bag": "nomads_delight:block/curd_bag_empty",
+    "particle": "nomads_delight:block/curd_bag_empty"
+  }
+}

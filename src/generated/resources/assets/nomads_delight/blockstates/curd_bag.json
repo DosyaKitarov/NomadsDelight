@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "bag_state=0": {
+      "model": "nomads_delight:block/curd_bag_empty"
+    },
+    "bag_state=1": {
+      "model": "nomads_delight:block/curd_bag_full"
+    },
+    "bag_state=2": {
+      "model": "nomads_delight:block/curd_bag_ready"
+    }
+  }
+}

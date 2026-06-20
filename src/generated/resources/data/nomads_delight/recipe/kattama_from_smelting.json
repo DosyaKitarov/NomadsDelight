@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "nomads_delight:raw_kattama"
+  },
+  "result": {
+    "count": 1,
+    "id": "nomads_delight:kattama"
+  }
+}

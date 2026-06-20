@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cottage_cheese": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:cottage_cheese"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:qurt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cottage_cheese"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:qurt"
+    ]
+  }
+}

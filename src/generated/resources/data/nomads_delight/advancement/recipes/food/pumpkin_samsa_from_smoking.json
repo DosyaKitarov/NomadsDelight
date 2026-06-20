@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_pumpkin_samsa": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:raw_pumpkin_samsa"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:pumpkin_samsa_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_pumpkin_samsa"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:pumpkin_samsa_from_smoking"
+    ]
+  }
+}

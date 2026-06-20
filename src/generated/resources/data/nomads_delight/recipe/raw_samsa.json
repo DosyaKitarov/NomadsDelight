@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    [
+      {
+        "item": "minecraft:mutton"
+      },
+      {
+        "item": "minecraft:beef"
+      },
+      {
+        "item": "nomads_delight:raw_horse_meat"
+      }
+    ],
+    {
+      "item": "minecraft:potato"
+    },
+    {
+      "item": "farmersdelight:wheat_dough"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "nomads_delight:raw_samsa"
+  }
+}

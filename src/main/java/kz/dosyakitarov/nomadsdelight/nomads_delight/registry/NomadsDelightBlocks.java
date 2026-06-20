@@ -33,12 +33,7 @@ public class NomadsDelightBlocks {
     public static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         NomadsDelightItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
-
-    // НУРС
-    // Замени ассеты на
-    // - assets/nomads_delight/models/block/curd_bag.json
-    // - assets/nomads_delight/models/item/curd_bag.json
-    // Когда будет готово
+    
     public static final DeferredBlock<Block> CURD_BAG = registerBlock("curd_bag",
             () -> new CeilingHangingBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.WOOL)

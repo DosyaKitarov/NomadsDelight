@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nomads_delight:roasted_millet"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "nomads_delight:butter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nomads_delight:maysok"
+  }
+}

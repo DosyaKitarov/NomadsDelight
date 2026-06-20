@@ -25,14 +25,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
 public class CeilingHangingBlock extends Block {
-    //Нурс когда сделаешь модель для калташа надо тут подправить, пока что стоит форма фонаря для тестов
-    protected static final VoxelShape AABB = Block.box(5.0D, 1.0D, 5.0D, 11.0D, 16.0D, 11.0D);
+    protected static final VoxelShape AABB = makeShape();
 
     public static final IntegerProperty BAG_STATE = IntegerProperty.create("bag_state", 0, 2);
 
@@ -61,6 +62,11 @@ public class CeilingHangingBlock extends Block {
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState,
                                   net.minecraft.world.level.LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
         if (direction == Direction.UP && !this.canSurvive(state, level, pos)) {
+            Block.popResource((Level) level, pos, new ItemStack(NomadsDelightBlocks.CURD_BAG.get()));
+            int currentState = state.getValue(BAG_STATE);
+            if (currentState == 2) {
+                Block.popResource((Level) level, pos, new ItemStack(NomadsDelightItems.COTTAGE_CHEESE.get()));
+            }
             return net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
@@ -77,7 +83,7 @@ public class CeilingHangingBlock extends Block {
                     player.getInventory().placeItemBackInInventory(new ItemStack(Items.BUCKET));
                 }
                 level.setBlock(pos, state.setValue(BAG_STATE, 1), 3);
-                level.scheduleTick(pos, this, 24000);
+                level.scheduleTick(pos, this, 6000);
             }
             level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
@@ -112,28 +118,33 @@ public class CeilingHangingBlock extends Block {
 
     @Override
     public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity te, ItemStack stack) {
-        // Only drop items if the player is NOT in Creative mode
         if (!player.isCreative()) {
-            int currentState = state.getValue(BAG_STATE);
-            if (currentState == 2) {
-                Block.popResource(level, pos, new ItemStack(NomadsDelightItems.COTTAGE_CHEESE.get()));
-            }
             Block.popResource(level, pos, new ItemStack(NomadsDelightBlocks.CURD_BAG.get()));
         }
 
-        // Call super to ensure the block is actually removed from the world
         super.playerDestroy(level, player, pos, state, te, stack);
     }
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.25F) {
-            if (level.isClientSide() && state.getValue(BAG_STATE) == 1) {
-                double x = pos.getX() + random.nextDouble();
-                double y = pos.getY() - 0.05;
-                double z = pos.getZ() + random.nextDouble();
+        if (random.nextFloat() < 0.20F) {
+            if (state.getValue(BAG_STATE) == 1) {
+                double minXZ = 0.1875;
+                double maxXZ = 0.8125;
+                double x = pos.getX() + minXZ + random.nextDouble() * (maxXZ - minXZ);
+                double y = pos.getY() + 0.18;
+                double z = pos.getZ() + minXZ + random.nextDouble() * (maxXZ - minXZ);
                 level.addParticle(ParticleTypes.FALLING_WATER, x, y, z, 0.0, 0.0, 0.0);
             }
         }
+    }
+
+    public static VoxelShape makeShape() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0.25, 0.625, 0.25, 0.75, 0.8125, 0.75), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.1875, 0.1875, 0.1875, 0.8125, 0.625, 0.8125), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.4375, 0.8125, 0.4375, 0.5625, 1, 0.5625), BooleanOp.OR);
+
+        return shape;
     }
 }

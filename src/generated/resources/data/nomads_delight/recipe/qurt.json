@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nomads_delight:cottage_cheese"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nomads_delight:qurt"
+  }
+}

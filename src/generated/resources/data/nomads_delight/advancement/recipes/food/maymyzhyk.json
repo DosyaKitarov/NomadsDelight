@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_butter": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:butter"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_tandoor_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:tandoor_bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:maymyzhyk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_butter",
+      "has_tandoor_bread"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:maymyzhyk"
+    ]
+  }
+}

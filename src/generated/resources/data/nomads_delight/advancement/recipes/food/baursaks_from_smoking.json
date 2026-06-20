@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_baursaks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:raw_baursaks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:baursaks_from_smoking"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_baursaks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:baursaks_from_smoking"
+    ]
+  }
+}
