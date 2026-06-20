@@ -11,21 +11,21 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_dough": {
-      "conditions": {
-        "items": [
-          {
-            "items": "farmersdelight:wheat_dough"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_onion": {
       "conditions": {
         "items": [
           {
             "items": "farmersdelight:onion"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_rolled_dough": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nomads_delight:rolled_dough"
           }
         ]
       },
@@ -42,7 +42,7 @@
     [
       "has_the_recipe",
       "has_onion",
-      "has_dough",
+      "has_rolled_dough",
       "has_beef_patty"
     ]
   ],

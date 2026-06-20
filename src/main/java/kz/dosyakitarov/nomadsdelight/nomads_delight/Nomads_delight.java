@@ -91,6 +91,7 @@ public class Nomads_delight {
 
                 output.accept(NomadsDelightItems.RAW_KAZY.get());
                 output.accept(NomadsDelightItems.COOKED_KAZY.get());
+                output.accept(NomadsDelightItems.ASIP.get());
                 output.accept(NomadsDelightItems.QARTA.get());
 
                 output.accept(NomadsDelightItems.RAW_HORSE_MEAT.get());
@@ -98,7 +99,7 @@ public class Nomads_delight {
 
                 output.accept(NomadsDelightItems.ACHUCHUK_SALAD.get());
                 output.accept(NomadsDelightItems.MEAT_SALAD.get());
-                output.accept(NomadsDelightItems.MORKOVCHA.get());
+                output.accept(NomadsDelightItems.MORKOVCHA_SALAD.get());
                 output.accept(NomadsDelightItems.SORPA.get());
                 output.accept(NomadsDelightItems.KESPE_KOZHE.get());
 
@@ -107,7 +108,6 @@ public class Nomads_delight {
                 output.accept(NomadsDelightItems.DIMLAMA.get());
                 output.accept(NomadsDelightItems.LAGHMAN.get());
                 output.accept(NomadsDelightItems.KAZAN_KEBAB.get());
-                output.accept(NomadsDelightItems.ASIP.get());
                 output.accept(NomadsDelightItems.KUURDAK.get());
                 output.accept(NomadsDelightItems.PILAF.get());
                 output.accept(NomadsDelightItems.BESHBARMAK.get());
@@ -140,7 +140,10 @@ public class Nomads_delight {
                 new NomadsDelightItemModelProvider(generator, MODID, existingFileHelper));
 
         generator.addProvider(event.includeClient(),
-                new NomadsDelightLanguageProvider(generator, MODID, "en_us"));
+                new NomadsDelightENLanguageProvider(generator, MODID, "en_us"));
+
+        generator.addProvider(event.includeClient(),
+                new NomadsDelightRULanguageProvider(generator, MODID, "ru_ru"));
 
         generator.addProvider(event.includeClient(),
                 new NomadsDelightRecipeProvider(generator, lookupProvider));

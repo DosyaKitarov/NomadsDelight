@@ -68,7 +68,7 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
         tryBasicItem(NomadsDelightItems.ZHARMA_BUCKET.get());
         tryBasicItem(NomadsDelightItems.ACHUCHUK_SALAD.get());
         tryBasicItem(NomadsDelightItems.MEAT_SALAD.get());
-        tryBasicItem(NomadsDelightItems.MORKOVCHA.get());
+        tryBasicItem(NomadsDelightItems.MORKOVCHA_SALAD.get());
     }
 
     private void tryBasicItem(net.minecraft.world.item.Item item) {

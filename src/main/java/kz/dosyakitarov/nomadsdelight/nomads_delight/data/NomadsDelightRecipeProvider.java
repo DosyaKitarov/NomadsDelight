@@ -360,10 +360,10 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         Items.BOWL
                 )
                 .addIngredient(BeefPatty)
-                .addIngredient(Dough)
+                .addIngredient(NomadsDelightItems.ROLLED_DOUGH)
                 .addIngredient(Onion)
                 .unlockedBy("has_onion", has(Onion))
-                .unlockedBy("has_dough", has(Dough))
+                .unlockedBy("has_rolled_dough", has(NomadsDelightItems.ROLLED_DOUGH))
                 .unlockedBy("has_beef_patty", has(BeefPatty))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
@@ -376,11 +376,11 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         Items.BOWL
                 )
                 .addIngredient(BeefPatty)
-                .addIngredient(Dough)
+                .addIngredient(NomadsDelightItems.ROLLED_DOUGH)
                 .addIngredient(Onion)
                 .addIngredient(PumpkinSlice)
                 .unlockedBy("has_onion", has(Onion))
-                .unlockedBy("has_dough", has(Dough))
+                .unlockedBy("has_rolled_dough", has(NomadsDelightItems.ROLLED_DOUGH))
                 .unlockedBy("has_beef_patty", has(BeefPatty))
                 .unlockedBy("has_pumpkin_slice", has(PumpkinSlice))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -458,8 +458,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         NomadsDelightItems.ASIP,
                         1,
                         200,
-                        1.0F,
-                        Items.BOWL
+                        1.0F
                 )
                 .addIngredient(meatForSamsaAsipAndKespeKozhe)
                 .addIngredient(Rice)

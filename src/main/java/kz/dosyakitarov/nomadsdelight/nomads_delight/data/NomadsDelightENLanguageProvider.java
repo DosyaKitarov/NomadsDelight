@@ -5,8 +5,8 @@ import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class NomadsDelightLanguageProvider extends LanguageProvider {
-    public NomadsDelightLanguageProvider(DataGenerator generator, String modId, String locale) {
+public class NomadsDelightENLanguageProvider extends LanguageProvider {
+    public NomadsDelightENLanguageProvider(DataGenerator generator, String modId, String locale) {
         super(generator.getPackOutput(), modId, locale);
     }
 
@@ -71,7 +71,7 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.ZHARMA_BUCKET.get(), "Zharma Bucket");
         add(NomadsDelightItems.ACHUCHUK_SALAD.get(), "Achuchuk Salad");
         add(NomadsDelightItems.MEAT_SALAD.get(), "Meat Salad");
-        add(NomadsDelightItems.MORKOVCHA.get(), "Morkovcha");
+        add(NomadsDelightItems.MORKOVCHA_SALAD.get(), "Morkovcha Salad");
 
         addAdvancement("root", "Nomad's Delight", "Savor the flavors of the boundless steppe.");
         addAdvancement("make_curd_bag", "Hot Swap?", "Craft a curd bag and start straining.");
@@ -80,8 +80,8 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         addAdvancement("make_shubat_or_qymyz", "White Gold", "Churn shubat or qymyz in your churn.");
         addAdvancement("get_drunk", "Steppe Stumble", "Drink enough qymyz to feel the world spin a little.");
         addAdvancement("make_butter", "Smooth Operator", "Churn butter.");
-        addAdvancement("make_rolling_pin", "Roll With It", "Craft a rolling pin.");
-        addAdvancement("bonk", "Bonk", "Defeat a mob with a rolling pin to the head.");
+        addAdvancement("make_rolling_pin", "Tung Tung Tung Sahur", "Craft a rolling pin.");
+        addAdvancement("bonk", "Bonk", "Defeat a mob with a rolling pin.");
         addAdvancement("make_zhayma", "Cut the Roll", "Cut out some zhayma.");
         addAdvancement("make_beshbarmak", "Five Fingers, One Bowl", "Cook a hearty plate of beshbarmak.");
         addAdvancement("milk_horse", "Got Milk? (The Hard Way)", "Milk a horse. No, that's not a typo.");
@@ -89,7 +89,9 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         addAdvancement("make_any_salad", "Fresh Off the Steppe", "Prepare any nomadic salad.");
         addAdvancement("make_any_meat_dish", "Meat Lover's Dream", "Cook any hearty nomadic meat dish.");
         addAdvancement("make_any_snack", "Steppe Snack Attack", "Whip up any sweet nomadic snack.");
-        addAdvancement("super_human", "Super Human", "Taste your way through everything — the full nomadic spread.");
+        addAdvancement("eat_everything", "Son Of The Steppe", "Taste your way through everything — the full nomadic spread.");
+        addAdvancement("eat_any_bread", "Eat With Bread! You will be full.", "Eat any kind of traditional bread.");
+        addAdvancement("eat_horse_on_horse", "Tasty Transport", "Eat horse meat... on a horse?");
     }
 
     private void addAdvancement(String id, String title, String description) {

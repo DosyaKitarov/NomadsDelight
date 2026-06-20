@@ -212,7 +212,7 @@
     "consume_morkovcha": {
       "conditions": {
         "item": {
-          "items": "nomads_delight:morkovcha"
+          "items": "nomads_delight:morkovcha_salad"
         }
       },
       "trigger": "minecraft:consume_item"
@@ -348,7 +348,7 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.nomads_delight.super_human.description"
+      "translate": "advancements.nomads_delight.eat_everything.description"
     },
     "frame": "challenge",
     "icon": {
@@ -356,7 +356,7 @@
       "id": "nomads_delight:qumyz_bucket"
     },
     "title": {
-      "translate": "advancements.nomads_delight.super_human.title"
+      "translate": "advancements.nomads_delight.eat_everything.title"
     }
   },
   "requirements": [

@@ -79,7 +79,7 @@ public class TallBlock extends Block {
                     level.setBlock(upperPos, newUpperState, 3);
                 }
 
-                level.scheduleTick(lowerPos, this, 12000);
+                level.scheduleTick(lowerPos, this, 6000);
             }
 
             level.playSound(null, lowerPos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
@@ -247,10 +247,8 @@ public class TallBlock extends Block {
                 double y = pos.getY();
                 double z = pos.getZ() + random.nextDouble();
                 double r = 1.0;
-                double g = 1.0;
-                double b = 0.0;
-
-                // The level passes RGB values through the velocity arguments
+                double g = 0.894;
+                double b = 0.659;
                 level.addParticle(ParticleTypes.EFFECT, x, y, z, r, g, b);
             }
         }

@@ -1,0 +1,102 @@
+{
+  "parent": "nomads_delight:root",
+  "criteria": {
+    "eat_horse_meat": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:cooked_horse_meat"
+        },
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "minecraft:horse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_kazy": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:cooked_kazy"
+        },
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "minecraft:horse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_qarta": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:qarta"
+        },
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "minecraft:horse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "eat_raw_horse_meat": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:raw_horse_meat"
+        },
+        "player": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "vehicle": {
+                "type": "minecraft:horse"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.eat_horse_on_horse.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:cooked_kazy"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.eat_horse_on_horse.title"
+    }
+  },
+  "requirements": [
+    [
+      "eat_kazy",
+      "eat_qarta",
+      "eat_horse_meat",
+      "eat_raw_horse_meat"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

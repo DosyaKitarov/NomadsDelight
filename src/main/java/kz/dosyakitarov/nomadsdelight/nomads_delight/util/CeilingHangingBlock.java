@@ -83,7 +83,7 @@ public class CeilingHangingBlock extends Block {
                     player.getInventory().placeItemBackInInventory(new ItemStack(Items.BUCKET));
                 }
                 level.setBlock(pos, state.setValue(BAG_STATE, 1), 3);
-                level.scheduleTick(pos, this, 6000);
+                level.scheduleTick(pos, this, 2400);
             }
             level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);

@@ -1,6 +1,5 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
 
-import com.mojang.blaze3d.shaders.Effect;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.util.JsonReader;
 import net.minecraft.ChatFormatting;
@@ -1253,11 +1252,11 @@ public class NomadsDelightItems {
                 }
             });
 
-    public static final DeferredItem<Item> MORKOVCHA = ITEMS.register("morkovcha",
+    public static final DeferredItem<Item> MORKOVCHA_SALAD = ITEMS.register("morkovcha_salad",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("morkovcha"))
-                            .saturationModifier(FOODS_JSON.getSaturation("morkovcha"))
+                            .nutrition(FOODS_JSON.getNutrition("morkovcha_salad"))
+                            .saturationModifier(FOODS_JSON.getSaturation("morkovcha_salad"))
                             .usingConvertsTo(Items.BOWL)
                             .build())
             ) {

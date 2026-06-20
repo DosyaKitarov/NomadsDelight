@@ -1,0 +1,26 @@
+{
+  "parent": "nomads_delight:make_rolling_pin",
+  "criteria": {
+    "killed_with_rolling_pin": {
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.bonk.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:rolling_pin"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.bonk.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_with_rolling_pin"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -49,6 +49,49 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 }
         );
 
+        adv(saver, root, "eat_horse_on_horse",
+                NomadsDelightItems.COOKED_KAZY.get(), AdvancementType.TASK, false, null,
+                AdvancementRequirements.Strategy.OR,
+                b -> {
+                    net.minecraft.advancements.critereon.ContextAwarePredicate playerPredicate =
+                            net.minecraft.advancements.critereon.EntityPredicate.wrap(
+                                    net.minecraft.advancements.critereon.EntityPredicate.Builder.entity()
+                                            .vehicle(net.minecraft.advancements.critereon.EntityPredicate.Builder.entity()
+                                                    .of(net.minecraft.world.entity.EntityType.HORSE))
+                            );
+                    b.addCriterion("eat_kazy", net.minecraft.advancements.CriteriaTriggers.CONSUME_ITEM.createCriterion(
+                            new net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance(
+                                    Optional.of(playerPredicate),
+                                    Optional.of(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
+                                            .of(NomadsDelightItems.COOKED_KAZY.get()).build())
+                            )
+                    ));
+
+                    b.addCriterion("eat_qarta", net.minecraft.advancements.CriteriaTriggers.CONSUME_ITEM.createCriterion(
+                            new net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance(
+                                    Optional.of(playerPredicate),
+                                    Optional.of(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
+                                            .of(NomadsDelightItems.QARTA.get()).build())
+                            )
+                    ));
+
+                    b.addCriterion("eat_horse_meat", net.minecraft.advancements.CriteriaTriggers.CONSUME_ITEM.createCriterion(
+                            new net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance(
+                                    Optional.of(playerPredicate),
+                                    Optional.of(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
+                                            .of(NomadsDelightItems.COOKED_HORSE_MEAT.get()).build())
+                            )
+                    ));
+                    b.addCriterion("eat_raw_horse_meat", net.minecraft.advancements.CriteriaTriggers.CONSUME_ITEM.createCriterion(
+                            new net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance(
+                                    Optional.of(playerPredicate),
+                                    Optional.of(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
+                                            .of(NomadsDelightItems.RAW_HORSE_MEAT.get()).build())
+                            )
+                    ));
+                }
+        );
+
         AdvancementHolder makeCurdBag = adv(saver, root, "make_curd_bag",
                 NomadsDelightBlocks.CURD_BAG.get(), AdvancementType.TASK, false, null,
                 AdvancementRequirements.Strategy.AND,
@@ -96,6 +139,22 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 b -> b.addCriterion("has_rolling_pin", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.ROLLING_PIN.get()))
         );
 
+        adv(saver, makeRollingPin, "bonk",
+                NomadsDelightItems.ROLLING_PIN.get(), AdvancementType.TASK, false, null,
+                AdvancementRequirements.Strategy.AND,
+                b -> b.addCriterion(BONK_CRITERION, net.minecraft.advancements.critereon.KilledTrigger.TriggerInstance.playerKilledEntity())
+        );
+
+        adv(saver, makeRollingPin, "eat_any_bread",
+                NomadsDelightItems.FLATBREAD.get(), AdvancementType.TASK, false, null,
+                AdvancementRequirements.Strategy.OR,
+                b -> {
+                    b.addCriterion("consume_flatbread", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.FLATBREAD.get()));
+                    b.addCriterion("consume_tandoor_bread", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.TANDOOR_BREAD.get()));
+                    b.addCriterion("consume_kattama", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.KATTAMA.get()));
+                    b.addCriterion("consume_baursaks", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.BAURSAKS.get()));
+                }
+        );
         AdvancementHolder makeZhayma = adv(saver, makeRollingPin, "make_zhayma",
                 NomadsDelightItems.ZHAYMA.get(), AdvancementType.TASK, false, null,
                 AdvancementRequirements.Strategy.AND,
@@ -126,7 +185,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 b -> {
                     b.addCriterion("has_achuchuk_salad", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.ACHUCHUK_SALAD.get()));
                     b.addCriterion("has_meat_salad", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.MEAT_SALAD.get()));
-                    b.addCriterion("has_morkovcha", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.MORKOVCHA.get()));
+                    b.addCriterion("has_morkovcha", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.MORKOVCHA_SALAD.get()));
                 }
         );
 
@@ -157,7 +216,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 }
         );
 
-        adv(saver, root, "super_human",
+        adv(saver, root, "eat_everything",
                 NomadsDelightItems.QUMYZ_BUCKET.get(), AdvancementType.CHALLENGE, false, null,
                 AdvancementRequirements.Strategy.AND,
                 b -> {
@@ -200,7 +259,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                     b.addCriterion("consume_qurt", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.QURT.get()));
                     b.addCriterion("consume_achuchuk_salad", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.ACHUCHUK_SALAD.get()));
                     b.addCriterion("consume_meat_salad", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.MEAT_SALAD.get()));
-                    b.addCriterion("consume_morkovcha", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.MORKOVCHA.get()));
+                    b.addCriterion("consume_morkovcha", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.MORKOVCHA_SALAD.get()));
 
                     b.addCriterion("consume_ready_made_talkan", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.READY_MADE_TALKAN.get()));
                     b.addCriterion("consume_halva", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.HALVA.get()));

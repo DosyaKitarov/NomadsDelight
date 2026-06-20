@@ -32,11 +32,12 @@ displayURL = "https://github.com/DosyaKitarov/nomads-delight" #optional
 authors = "${mod_authors}" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-A Farmer's Delight add-on that brings the rich flavors of the steppe straight to your Minecraft kitchen!
-Embrace the nomadic lifestyle with new ingredients, hearty meals, and food designed for long journeys. Whether you're exploring the endless plains or setting up a temporary camp, this mod expands your culinary horizons with authentic traditions.
-Saddle up, fire up the cooking pot, and taste the spirit of the steppes!
-As bolsyn!
+description = '''
+A Farmer's Delight addon that brings the rich culinary traditions of the steppe nomads to your Minecraft kitchen.
+
+Adds 50+ traditional dishes and ingredients, 19 new advancements, and two new functional blocks - the Qaltasha storage pouch and the Kubi dairy churn - both built to integrate with Farmer's Delight's cooking and farming systems.
+
+Saddle up, fire up the cooking pot, and taste the spirit of the steppes. As bolsyn!
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.

@@ -1,0 +1,58 @@
+{
+  "parent": "nomads_delight:make_rolling_pin",
+  "criteria": {
+    "consume_baursaks": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:baursaks"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_flatbread": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:flatbread"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_kattama": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kattama"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "consume_tandoor_bread": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:tandoor_bread"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.nomads_delight.eat_any_bread.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "nomads_delight:flatbread"
+    },
+    "title": {
+      "translate": "advancements.nomads_delight.eat_any_bread.title"
+    }
+  },
+  "requirements": [
+    [
+      "consume_flatbread",
+      "consume_tandoor_bread",
+      "consume_kattama",
+      "consume_baursaks"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
