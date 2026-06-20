@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_carpets": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:wool_carpets"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_straw": {
+      "conditions": {
+        "items": [
+          {
+            "items": "farmersdelight:straw"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_string": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:string"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nomads_delight:curd_bag"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_carpets",
+      "has_string",
+      "has_straw"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nomads_delight:curd_bag"
+    ]
+  }
+}

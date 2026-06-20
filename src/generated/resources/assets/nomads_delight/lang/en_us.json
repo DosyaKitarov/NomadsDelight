@@ -37,6 +37,7 @@
   "item.nomads_delight.qumyz_bucket": "Qumyz Bucket",
   "item.nomads_delight.qurt": "Qurt",
   "item.nomads_delight.raw_baursaks": "Raw Baursaks",
+  "item.nomads_delight.raw_chicken_samsa": "Raw Chicken Samsa",
   "item.nomads_delight.raw_flatbread": "Raw Flatbread",
   "item.nomads_delight.raw_horse_meat": "Raw Horse Meat",
   "item.nomads_delight.raw_kattama": "Raw Kattama",
@@ -57,6 +58,5 @@
   "item.nomads_delight.zharma_bucket": "Zharma Bucket",
   "item.nomads_delight.zhayma": "Zhayma",
   "item.nomads_delight.zhent": "Zhent",
-  "itemGroup.nomads_delight": "Nomad's Delight",
-  "Removes All Effects": ""
+  "itemGroup.nomads_delight": "Nomad's Delight"
 }

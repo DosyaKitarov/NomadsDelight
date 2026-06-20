@@ -1,0 +1,8 @@
+{
+  "parent": "nomads_delight:block/churn_up",
+  "textures": {
+    "0": "nomads_delight:block/churn_up_top_filled",
+    "1": "nomads_delight:block/churn_up_other",
+    "particle": "nomads_delight:block/churn_up_top"
+  }
+}

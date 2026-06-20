@@ -46,6 +46,7 @@ public class NomadsDelightLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.KESPE_KOZHE.get(), "Kespe Kozhe");
         add(NomadsDelightItems.RAW_SAMSA.get(), "Raw Samsa");
         add(NomadsDelightItems.SAMSA.get(), "Samsa");
+        add(NomadsDelightItems.RAW_CHICKEN_SAMSA.get(), "Raw Chicken Samsa");
         add(NomadsDelightItems.CHICKEN_SAMSA.get(), "Chicken Samsa");
         add(NomadsDelightItems.RAW_PUMPKIN_SAMSA.get(), "Raw Pumpkin Samsa");
         add(NomadsDelightItems.PUMPKIN_SAMSA.get(), "Pumpkin Samsa");

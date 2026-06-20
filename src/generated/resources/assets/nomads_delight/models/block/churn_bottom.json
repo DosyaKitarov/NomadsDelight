@@ -1,0 +1,8 @@
+{
+  "parent": "nomads_delight:block/churn_down",
+  "textures": {
+    "0": "nomads_delight:block/churn_down_bottom",
+    "1": "nomads_delight:block/churn_down_side",
+    "particle": "nomads_delight:block/churn_down_side"
+  }
+}

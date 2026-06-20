@@ -1,14 +1,17 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
 
+import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.crafting.CompoundIngredient;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
@@ -43,7 +46,46 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 NomadsDelightItems.RAW_HORSE_MEAT
         );
 
+        Ingredient woolForCurdBag = CompoundIngredient.of(
+                Ingredient.of(ItemTags.WOOL_CARPETS),
+                Ingredient.of(ModItems.STRAW.get())
+        );
+
         //Крафты на верстаке
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NomadsDelightItems.ROLLING_PIN, 1)
+                .pattern("S")
+                .pattern("P")
+                .pattern("S")
+                .define('P', ItemTags.PLANKS)
+                .define('S', Items.STICK)
+                .unlockedBy("has_plank", has(ItemTags.PLANKS))
+                .unlockedBy("has_stick", has(Items.STICK))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NomadsDelightBlocks.CURD_BAG, 1)
+                .pattern(" S ")
+                .pattern("W W")
+                .pattern("WWW")
+                .define('W', woolForCurdBag)
+                .define('S', Items.STRING)
+                .unlockedBy("has_carpets", has(ItemTags.WOOL_CARPETS))
+                .unlockedBy("has_string", has(Items.STRING))
+                .unlockedBy("has_straw", has(ModItems.STRAW.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NomadsDelightBlocks.CHURN, 1)
+                .pattern("PIP")
+                .pattern("PSP")
+                .pattern("PPP")
+                .define('P', ItemTags.PLANKS)
+                .define('I', Items.STICK)
+                .define('S', Items.WOODEN_SHOVEL)
+                .unlockedBy("has_plank", has(ItemTags.PLANKS))
+                .unlockedBy("has_stick", has(Items.STICK))
+                .unlockedBy("has_shovel", has(Items.WOODEN_SHOVEL))
+                .save(recipeOutput);
+
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.RAW_KAZY)
                 .requires(NomadsDelightItems.HORSE_INTESTINES)
                 .requires(NomadsDelightItems.RAW_HORSE_MEAT)

@@ -1,6 +1,5 @@
 package kz.dosyakitarov.nomadsdelight.nomads_delight.util;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
 import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,16 +12,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -30,24 +28,35 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
-
-import javax.annotation.Nullable;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TallBlock extends Block {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final IntegerProperty CHURN_STATE = IntegerProperty.create("churn_state", 0, 2);
     public static final IntegerProperty MILK_TYPE = IntegerProperty.create("milk_type", 0, 2);
 
+    private static final VoxelShape LOWER_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    private static final VoxelShape UPPER_SHAPE = makeShape();
+
+    @Override
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return state.getValue(HALF) == DoubleBlockHalf.UPPER ? UPPER_SHAPE : LOWER_SHAPE;
+    }
 
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos,
                                            Player player, InteractionHand hand, BlockHitResult hit) {
-        int currentState = state.getValue(CHURN_STATE);
-        int milkType = state.getValue(MILK_TYPE);
-        if (state.getValue(HALF) == DoubleBlockHalf.UPPER) {
-            pos = pos.below();
-            state = level.getBlockState(pos);
-        }
+        BlockPos lowerPos = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
+        BlockPos upperPos = state.getValue(HALF) == DoubleBlockHalf.UPPER ? pos : pos.above();
+
+        BlockState lowerState = level.getBlockState(lowerPos);
+
+        int currentState = lowerState.getValue(CHURN_STATE);
+        int milkType = lowerState.getValue(MILK_TYPE);
+
         if (currentState == 0 && (stack.getItem() == NomadsDelightItems.HORSE_MILK_BUCKET.get()
                 || stack.getItem() == NomadsDelightItems.CAMEL_MILK_BUCKET.get()
                 || stack.getItem() == Items.MILK_BUCKET)) {
@@ -55,23 +64,26 @@ public class TallBlock extends Block {
             milkType = (stack.getItem() == NomadsDelightItems.HORSE_MILK_BUCKET.get()) ? 0 :
                     (stack.getItem() == NomadsDelightItems.CAMEL_MILK_BUCKET.get()) ? 1 : 2;
 
-
             if (!level.isClientSide) {
                 if (!player.isCreative()) {
                     stack.shrink(1);
                     player.getInventory().placeItemBackInInventory(new ItemStack(Items.BUCKET));
                 }
 
-                BlockState newState = state
-                        .setValue(CHURN_STATE, 1)
-                        .setValue(MILK_TYPE, milkType);
-                level.setBlock(pos, newState, 3);
-                level.scheduleTick(pos, this, 100);
+                BlockState newLowerState = lowerState.setValue(CHURN_STATE, 1).setValue(MILK_TYPE, milkType);
+                level.setBlock(lowerPos, newLowerState, 3);
+
+                BlockState upperState = level.getBlockState(upperPos);
+                if (upperState.is(this)) {
+                    BlockState newUpperState = upperState.setValue(CHURN_STATE, 1).setValue(MILK_TYPE, milkType);
+                    level.setBlock(upperPos, newUpperState, 3);
+                }
+
+                level.scheduleTick(lowerPos, this, 100);
             }
 
-            level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
+            level.playSound(null, lowerPos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
-
         }
 
         if (currentState == 2) {
@@ -81,37 +93,62 @@ public class TallBlock extends Block {
                         stack.shrink(1);
                         player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.QUMYZ_BUCKET.get()));
                     }
-                    level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
+                    resetChurnState(level, lowerPos, upperPos, lowerState);
                 } else if (milkType == 2) {
                     if (!level.isClientSide) {
                         stack.shrink(1);
                         player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.SHUBAT_BUCKET.get()));
                     }
-                    level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
+                    resetChurnState(level, lowerPos, upperPos, lowerState);
                 }
-                level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
+                level.playSound(null, lowerPos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
+
             if (milkType == 2) {
                 if (!level.isClientSide) {
                     player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.BUTTER.get()));
                 }
-                level.setBlock(pos, state.setValue(CHURN_STATE, 0), 2);
-                level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
+                resetChurnState(level, lowerPos, upperPos, lowerState);
+                level.playSound(null, lowerPos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
         }
+
         return ItemInteractionResult.SUCCESS;
+    }
+
+    private void resetChurnState(Level level, BlockPos lowerPos, BlockPos upperPos, BlockState lowerState) {
+        if (!level.isClientSide) {
+            level.setBlock(lowerPos, lowerState.setValue(CHURN_STATE, 0), 3);
+
+            BlockState upperState = level.getBlockState(upperPos);
+            if (upperState.is(this)) {
+                level.setBlock(upperPos, upperState.setValue(CHURN_STATE, 0), 3);
+            }
+        }
     }
 
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource source) {
         if (state.getValue(CHURN_STATE) == 1) {
-            level.setBlock(pos, state.setValue(CHURN_STATE, 2), 3);
+            BlockPos lowerPos = state.getValue(HALF) == DoubleBlockHalf.LOWER ? pos : pos.below();
+            BlockPos upperPos = state.getValue(HALF) == DoubleBlockHalf.UPPER ? pos : pos.above();
+
+            BlockState lowerState = level.getBlockState(lowerPos);
+            BlockState upperState = level.getBlockState(upperPos);
+
+            if (lowerState.is(this)) {
+                level.setBlock(lowerPos, lowerState.setValue(CHURN_STATE, 2), 3);
+            }
+            if (upperState.is(this)) {
+                level.setBlock(upperPos, upperState.setValue(CHURN_STATE, 2), 3);
+            }
+
             level.playSound(null,
-                    (double) pos.getX() + 0.5D,
-                    (double) pos.getY() + 0.5D,
-                    (double) pos.getZ() + 0.5D,
+                    (double) lowerPos.getX() + 0.5D,
+                    (double) lowerPos.getY() + 0.5D,
+                    (double) lowerPos.getZ() + 0.5D,
                     SoundEvents.SLIME_BLOCK_BREAK,
                     SoundSource.BLOCKS,
                     1.0F, 1.0F
@@ -170,7 +207,7 @@ public class TallBlock extends Block {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         if (state.getValue(HALF) == DoubleBlockHalf.LOWER) {
-            return level.getBlockState(pos.below()).isFaceSturdy(level, pos.below(), Direction.UP);
+            return true;
         }
         BlockState below = level.getBlockState(pos.below());
         return below.is(this) && below.getValue(HALF) == DoubleBlockHalf.LOWER;
@@ -204,13 +241,27 @@ public class TallBlock extends Block {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.25F) {
+        if (random.nextFloat() < 0.5F) {
             if (level.isClientSide() && state.getValue(CHURN_STATE) == 2) {
                 double x = pos.getX() + random.nextDouble();
-                double y = pos.getY() - 0.05;
+                double y = pos.getY();
                 double z = pos.getZ() + random.nextDouble();
-                level.addParticle(ParticleTypes.FALLING_WATER, x, y, z, 0.0, 0.0, 0.0);
+                double r = 1.0;
+                double g = 1.0;
+                double b = 0.0;
+
+                // The level passes RGB values through the velocity arguments
+                level.addParticle(ParticleTypes.EFFECT, x, y, z, r, g, b);
             }
         }
+    }
+
+
+    public static VoxelShape makeShape() {
+        VoxelShape shape = Shapes.empty();
+        shape = Shapes.join(shape, Shapes.box(0, 0, 0, 1, 0.125, 1), BooleanOp.OR);
+        shape = Shapes.join(shape, Shapes.box(0.375, 0.125, 0.375, 0.625, 1, 0.625), BooleanOp.OR);
+
+        return shape;
     }
 }

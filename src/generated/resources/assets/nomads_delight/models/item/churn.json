@@ -1,0 +1,6 @@
+{
+  "parent": "nomads_delight:block/churn_item",
+  "textures": {
+    "0": "nomads_delight:block/churn_down_bottom"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "churn_state=0,half=lower,milk_type=0": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=0,half=lower,milk_type=1": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=0,half=lower,milk_type=2": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=0,half=upper,milk_type=0": {
+      "model": "nomads_delight:block/churn_top"
+    },
+    "churn_state=0,half=upper,milk_type=1": {
+      "model": "nomads_delight:block/churn_top"
+    },
+    "churn_state=0,half=upper,milk_type=2": {
+      "model": "nomads_delight:block/churn_top"
+    },
+    "churn_state=1,half=lower,milk_type=0": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=1,half=lower,milk_type=1": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=1,half=lower,milk_type=2": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=1,half=upper,milk_type=0": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    },
+    "churn_state=1,half=upper,milk_type=1": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    },
+    "churn_state=1,half=upper,milk_type=2": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    },
+    "churn_state=2,half=lower,milk_type=0": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=2,half=lower,milk_type=1": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=2,half=lower,milk_type=2": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "churn_state=2,half=upper,milk_type=0": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    },
+    "churn_state=2,half=upper,milk_type=1": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    },
+    "churn_state=2,half=upper,milk_type=2": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    }
+  }
+}
