@@ -1,5 +1,5 @@
 {
-  "parent": "nomads_delight:make_churn",
+  "parent": "nomads_delight:make_butter_churn",
   "criteria": {
     "has_qymyz": {
       "conditions": {

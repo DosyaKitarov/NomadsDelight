@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -14,13 +14,12 @@ public class NomadsDelightRULanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup.nomads_delight", "Радость кочевника");
         add(NomadsDelightBlocks.CURD_BAG.get(), "Мешочек");
-        add(NomadsDelightBlocks.CHURN.get(), "Маслобойка");
+        add(NomadsDelightBlocks.BUTTER_CHURN.get(), "Маслобойка");
         add(NomadsDelightItems.QUMYZ_BUCKET.get(), "Ведро кумыса");
         add(NomadsDelightItems.HORSE_MILK_BUCKET.get(), "Ведро кобыльего молока");
         add(NomadsDelightItems.SHUBAT_BUCKET.get(), "Ведро шубата");
         add(NomadsDelightItems.CAMEL_MILK_BUCKET.get(), "Ведро верблюжьего молока");
         add(NomadsDelightItems.BUTTER.get(), "Сливочное масло");
-        add(NomadsDelightItems.COTTAGE_CHEESE.get(), "Творог");
         add(NomadsDelightItems.RAW_HORSE_MEAT.get(), "Сырая конина");
         add(NomadsDelightItems.COOKED_HORSE_MEAT.get(), "Жареная конина");
         add(NomadsDelightItems.ROLLING_PIN.get(), "Скалка");

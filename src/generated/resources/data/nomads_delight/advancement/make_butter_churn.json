@@ -1,11 +1,11 @@
 {
   "parent": "nomads_delight:root",
   "criteria": {
-    "has_churn": {
+    "has_butter_churn": {
       "conditions": {
         "items": [
           {
-            "items": "nomads_delight:churn"
+            "items": "nomads_delight:butter_churn"
           }
         ]
       },
@@ -14,19 +14,19 @@
   },
   "display": {
     "description": {
-      "translate": "advancements.nomads_delight.make_churn.description"
+      "translate": "advancements.nomads_delight.make_butter_churn.description"
     },
     "icon": {
       "count": 1,
-      "id": "nomads_delight:churn"
+      "id": "nomads_delight:butter_churn"
     },
     "title": {
-      "translate": "advancements.nomads_delight.make_churn.title"
+      "translate": "advancements.nomads_delight.make_butter_churn.title"
     }
   },
   "requirements": [
     [
-      "has_churn"
+      "has_butter_churn"
     ]
   ],
   "sends_telemetry_event": true

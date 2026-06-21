@@ -1,4 +1,4 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.util;
+package kz.dosyakitarov.nomads_delight.util;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

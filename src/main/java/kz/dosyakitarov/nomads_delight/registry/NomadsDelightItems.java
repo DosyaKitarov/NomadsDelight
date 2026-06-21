@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
+package kz.dosyakitarov.nomads_delight.registry;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.util.JsonReader;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.util.JsonReader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
@@ -36,31 +36,7 @@ public class NomadsDelightItems {
     public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .build())));
-
-    public static final DeferredItem<Item> COTTAGE_CHEESE = ITEMS.register("cottage_cheese",
-            () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
-                    .nutrition(FOODS_JSON.getNutrition("cottage_cheese"))
-                    .saturationModifier(FOODS_JSON.getSaturation("cottage_cheese"))
-                    .build())) {
-                @Override
-                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-                    ItemStack result = super.finishUsingItem(stack, level, entity);
-
-                    if (!level.isClientSide) {
-                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 1200, 0));
-                    }
-
-                    return result;
-                }
-
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
-
-                    super.appendHoverText(stack, context, tooltip, flag);
-                }
-            });
-
+    
     public static final DeferredItem<Item> RAW_HORSE_MEAT = ITEMS.register("raw_horse_meat",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(FOODS_JSON.getNutrition("raw_horse_meat"))
@@ -334,7 +310,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 300)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }

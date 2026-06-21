@@ -1,9 +1,9 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.util.CeilingHangingBlock;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.util.TallBlock;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.util.CeilingHangingBlock;
+import kz.dosyakitarov.nomads_delight.util.TallBlock;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
@@ -21,7 +21,7 @@ public class NomadsDelightBlockModelProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         createCurdBag(NomadsDelightBlocks.CURD_BAG.get());
-        createChurn(NomadsDelightBlocks.CHURN.get());
+        createChurn(NomadsDelightBlocks.BUTTER_CHURN.get());
     }
 
     private void createCurdBag(Block block) {

@@ -1,31 +1,31 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_plank": {
+    "has_bowl": {
       "conditions": {
         "items": [
           {
-            "items": "#minecraft:planks"
+            "items": "minecraft:bowl"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_shovel": {
+    "has_carrot": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:wooden_shovel"
+            "items": "minecraft:carrot"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_stick": {
+    "has_onion": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stick"
+            "items": "farmersdelight:onion"
           }
         ]
       },
@@ -33,7 +33,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nomads_delight:churn"
+        "recipe": "nomads_delight:morkovcha_salad"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -41,14 +41,14 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_plank",
-      "has_stick",
-      "has_shovel"
+      "has_carrot",
+      "has_onion",
+      "has_bowl"
     ]
   ],
   "rewards": {
     "recipes": [
-      "nomads_delight:churn"
+      "nomads_delight:morkovcha_salad"
     ]
   }
 }

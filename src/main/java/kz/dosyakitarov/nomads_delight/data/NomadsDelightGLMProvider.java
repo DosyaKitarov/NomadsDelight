@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.EntityTypePredicate;
@@ -19,7 +19,6 @@ import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
 import vectorwing.farmersdelight.common.tag.ModTags;

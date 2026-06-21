@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.util;
+package kz.dosyakitarov.nomads_delight.util;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,11 +10,9 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -65,7 +63,7 @@ public class CeilingHangingBlock extends Block {
             Block.popResource((Level) level, pos, new ItemStack(NomadsDelightBlocks.CURD_BAG.get()));
             int currentState = state.getValue(BAG_STATE);
             if (currentState == 2) {
-                Block.popResource((Level) level, pos, new ItemStack(NomadsDelightItems.COTTAGE_CHEESE.get()));
+                Block.popResource((Level) level, pos, new ItemStack(NomadsDelightItems.CURD.get()));
             }
             return net.minecraft.world.level.block.Blocks.AIR.defaultBlockState();
         }
@@ -91,7 +89,7 @@ public class CeilingHangingBlock extends Block {
 
         if (currentState == 2) {
             if (!level.isClientSide) {
-                Block.popResource(level, pos, new ItemStack(NomadsDelightItems.COTTAGE_CHEESE.get()));
+                Block.popResource(level, pos, new ItemStack(NomadsDelightItems.CURD.get()));
                 level.setBlock(pos, state.setValue(BAG_STATE, 0), 3);
             }
             //play sound

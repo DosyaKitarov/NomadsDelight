@@ -81,14 +81,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "consume_cottage_cheese": {
-      "conditions": {
-        "item": {
-          "items": "nomads_delight:cottage_cheese"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "consume_curd": {
       "conditions": {
         "item": {
@@ -449,9 +441,6 @@
     ],
     [
       "consume_butter"
-    ],
-    [
-      "consume_cottage_cheese"
     ],
     [
       "consume_curd"

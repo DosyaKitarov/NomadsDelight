@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.DataGenerator;
@@ -12,7 +12,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.crafting.CompoundIngredient;
-import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.client.recipebook.CookingPotRecipeBookTab;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.registry.ModSounds;
@@ -73,7 +72,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_straw", has(ModItems.STRAW.get()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NomadsDelightBlocks.CHURN, 1)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NomadsDelightBlocks.BUTTER_CHURN, 1)
                 .pattern("PIP")
                 .pattern("PSP")
                 .pattern("PPP")
@@ -182,6 +181,11 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_sugar", has(Items.SUGAR))
                 .save(recipeOutput);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.TALKAN)
+                .requires(NomadsDelightItems.ROASTED_MILLET)
+                .unlockedBy("has_roasted_millet", has(NomadsDelightItems.ROASTED_MILLET))
+                .save(recipeOutput);
+
         Ingredient sweetForTalkan = Ingredient.of(
                 Items.SUGAR,
                 Items.HONEY_BOTTLE
@@ -210,8 +214,8 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.QURT)
-                .requires(NomadsDelightItems.COTTAGE_CHEESE)
-                .unlockedBy("has_cottage_cheese", has(NomadsDelightItems.COTTAGE_CHEESE))
+                .requires(NomadsDelightItems.CURD)
+                .unlockedBy("has_curd", has(NomadsDelightItems.CURD))
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.AYRAN_BUCKET)
@@ -261,6 +265,16 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_cabbage_leaf", has(CabbageLeaf))
                 .unlockedBy("has_cooked_beef", has(Items.COOKED_BEEF))
                 .unlockedBy("has_cooked_mutton", has(Items.COOKED_MUTTON))
+                .unlockedBy("has_bowl", has(Items.BOWL))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.MORKOVCHA_SALAD)
+                .requires(Items.CARROT)
+                .requires(Items.CARROT)
+                .requires(Onion)
+                .requires(Items.BOWL)
+                .unlockedBy("has_carrot", has(Items.CARROT))
+                .unlockedBy("has_onion", has(Onion))
                 .unlockedBy("has_bowl", has(Items.BOWL))
                 .save(recipeOutput);
 
@@ -551,6 +565,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
         registerCookingRecipes(NomadsDelightItems.RAW_KATTAMA, NomadsDelightItems.KATTAMA, 0.35f, recipeOutput);
         registerCookingRecipes(NomadsDelightItems.RAW_FLATBREAD, NomadsDelightItems.FLATBREAD, 0.35f, recipeOutput);
         registerCookingRecipes(NomadsDelightItems.RAW_BAURSAKS, NomadsDelightItems.BAURSAKS, 0.35f, recipeOutput);
+        registerCookingRecipes(NomadsDelightItems.RAW_KAZY, NomadsDelightItems.COOKED_KAZY, 0.35f, recipeOutput);
         registerCookingRecipes(NomadsDelightItems.HORSE_INTESTINES, NomadsDelightItems.QARTA, 0.35f, recipeOutput);
         registerCookingRecipes(Items.MILK_BUCKET, NomadsDelightItems.QATYQ_BUCKET, 0.35f, recipeOutput);
     }

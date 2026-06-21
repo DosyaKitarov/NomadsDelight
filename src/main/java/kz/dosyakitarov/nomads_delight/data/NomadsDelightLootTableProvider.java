@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;

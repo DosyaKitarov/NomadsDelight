@@ -1,8 +1,8 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.EffectsChangedTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -40,12 +40,14 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
     public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> saver, ExistingFileHelper existingFileHelper) {
 
         AdvancementHolder root = adv(saver, null, "root",
-                NomadsDelightItems.BESHBARMAK.get(), AdvancementType.TASK, false, ROOT_BACKGROUND,
-                AdvancementRequirements.Strategy.OR,
+                NomadsDelightItems.BESHBARMAK.get(), AdvancementType.TASK, false, false, false, ROOT_BACKGROUND,
+                AdvancementRequirements.Strategy.AND,
                 b -> {
-                    b.addCriterion("has_curd_bag", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightBlocks.CURD_BAG.get()));
-                    b.addCriterion("has_churn", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightBlocks.CHURN.get()));
-                    b.addCriterion("has_rolling_pin", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.ROLLING_PIN.get()));
+                    b.addCriterion("auto_unlock", net.minecraft.advancements.CriteriaTriggers.TICK.createCriterion(
+                            new net.minecraft.advancements.critereon.PlayerTrigger.TriggerInstance(
+                                    java.util.Optional.empty()
+                            )
+                    ));
                 }
         );
 
@@ -104,10 +106,10 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 b -> b.addCriterion("has_curd", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.CURD.get()))
         );
 
-        AdvancementHolder makeChurn = adv(saver, root, "make_churn",
-                NomadsDelightBlocks.CHURN.get(), AdvancementType.TASK, false, null,
+        AdvancementHolder makeChurn = adv(saver, root, "make_butter_churn",
+                NomadsDelightBlocks.BUTTER_CHURN.get(), AdvancementType.TASK, false, null,
                 AdvancementRequirements.Strategy.AND,
-                b -> b.addCriterion("has_churn", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightBlocks.CHURN.get()))
+                b -> b.addCriterion("has_butter_churn", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightBlocks.BUTTER_CHURN.get()))
         );
 
         AdvancementHolder makeShubatOrQymyz = adv(saver, makeChurn, "make_shubat_or_qymyz",
@@ -254,7 +256,6 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                     b.addCriterion("consume_baursaks", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.BAURSAKS.get()));
 
                     b.addCriterion("consume_butter", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.BUTTER.get()));
-                    b.addCriterion("consume_cottage_cheese", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.COTTAGE_CHEESE.get()));
                     b.addCriterion("consume_curd", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.CURD.get()));
                     b.addCriterion("consume_qurt", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.QURT.get()));
                     b.addCriterion("consume_achuchuk_salad", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.ACHUCHUK_SALAD.get()));
@@ -296,6 +297,40 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 type,
                 true,
                 true,
+                hidden
+        ));
+
+        criteria.accept(builder);
+        builder.requirements(strategy);
+
+        return builder.save(saver, MODID + ":" + id);
+    }
+
+    private static AdvancementHolder adv(Consumer<AdvancementHolder> saver,
+                                         AdvancementHolder parent,
+                                         String id,
+                                         ItemLike icon,
+                                         AdvancementType type,
+                                         boolean hidden,
+                                         boolean showToast,
+                                         boolean announceChat,
+                                         ResourceLocation background,
+                                         AdvancementRequirements.Strategy strategy,
+                                         Consumer<Advancement.Builder> criteria) {
+
+        Advancement.Builder builder = Advancement.Builder.advancement();
+        if (parent != null) {
+            builder.parent(parent);
+        }
+
+        builder.display(new DisplayInfo(
+                new ItemStack(icon.asItem()),
+                Component.translatable(titleKey(id)),
+                Component.translatable(descKey(id)),
+                Optional.ofNullable(background),
+                type,
+                showToast,
+                announceChat,
                 hidden
         ));
 

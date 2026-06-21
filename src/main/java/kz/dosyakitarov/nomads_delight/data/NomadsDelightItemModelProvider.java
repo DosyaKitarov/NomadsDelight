@@ -1,6 +1,6 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -18,7 +18,6 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
         tryBasicItem(NomadsDelightItems.SHUBAT_BUCKET.get());
         tryBasicItem(NomadsDelightItems.CAMEL_MILK_BUCKET.get());
         tryBasicItem(NomadsDelightItems.BUTTER.get());
-        tryBasicItem(NomadsDelightItems.COTTAGE_CHEESE.get());
         tryBasicItem(NomadsDelightItems.RAW_HORSE_MEAT.get());
         tryBasicItem(NomadsDelightItems.COOKED_HORSE_MEAT.get());
         tryBasicItem(NomadsDelightItems.ROLLED_DOUGH.get());

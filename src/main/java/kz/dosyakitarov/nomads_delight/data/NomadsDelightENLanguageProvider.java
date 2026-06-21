@@ -1,7 +1,7 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.data;
+package kz.dosyakitarov.nomads_delight.data;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.data.DataGenerator;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
@@ -14,13 +14,12 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add("itemGroup.nomads_delight", "Nomad's Delight");
         add(NomadsDelightBlocks.CURD_BAG.get(), "Curd Bag");
-        add(NomadsDelightBlocks.CHURN.get(), "Churn");
+        add(NomadsDelightBlocks.BUTTER_CHURN.get(), "Butter Churn");
         add(NomadsDelightItems.QUMYZ_BUCKET.get(), "Qumyz Bucket");
         add(NomadsDelightItems.HORSE_MILK_BUCKET.get(), "Horse Milk Bucket");
         add(NomadsDelightItems.SHUBAT_BUCKET.get(), "Shubat Bucket");
         add(NomadsDelightItems.CAMEL_MILK_BUCKET.get(), "Camel Milk Bucket");
         add(NomadsDelightItems.BUTTER.get(), "Butter");
-        add(NomadsDelightItems.COTTAGE_CHEESE.get(), "Cottage Cheese");
         add(NomadsDelightItems.RAW_HORSE_MEAT.get(), "Raw Horse Meat");
         add(NomadsDelightItems.COOKED_HORSE_MEAT.get(), "Cooked Horse Meat");
         add(NomadsDelightItems.ROLLING_PIN.get(), "Rolling Pin");
@@ -76,7 +75,7 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         addAdvancement("root", "Nomad's Delight", "Savor the flavors of the boundless steppe.");
         addAdvancement("make_curd_bag", "Hot Swap?", "Craft a curd bag and start straining.");
         addAdvancement("make_curd", "Drip Dry", "Put Qatyq in the bag to get fresh curd.");
-        addAdvancement("make_churn", "Churn, Baby, Churn", "Craft a churn.");
+        addAdvancement("make_butter_churn", "Churn, Baby, Churn", "Craft a butter churn.");
         addAdvancement("make_shubat_or_qymyz", "White Gold", "Churn shubat or qymyz in your churn.");
         addAdvancement("get_drunk", "Steppe Stumble", "Drink enough qymyz to feel the world spin a little.");
         addAdvancement("make_butter", "Smooth Operator", "Churn butter.");
@@ -92,6 +91,12 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         addAdvancement("eat_everything", "Son Of The Steppe", "Taste your way through everything — the full nomadic spread.");
         addAdvancement("eat_any_bread", "Eat With Bread! You will be full.", "Eat any kind of traditional bread.");
         addAdvancement("eat_horse_on_horse", "Tasty Transport", "Eat horse meat... on a horse?");
+
+        add("jei.nomads_delight.category.churning", "Churning");
+        add("jei.nomads_delight.category.churning.time", "Churning time: %s sec.");
+
+        add("jei.nomads_delight.category.straining", "Straining");
+        add("jei.nomads_delight.category.straining.time", "Straining time: %s sec.");
     }
 
     private void addAdvancement(String id, String title, String description) {

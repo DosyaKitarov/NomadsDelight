@@ -1,9 +1,9 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight;
+package kz.dosyakitarov.nomads_delight;
 
 import com.mojang.logging.LogUtils;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.data.*;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightBlocks;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.data.*;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
@@ -38,7 +38,7 @@ public class Nomads_delight {
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> NomadsDelightItems.BESHBARMAK.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(NomadsDelightBlocks.CHURN.get());
+                output.accept(NomadsDelightBlocks.BUTTER_CHURN.get());
                 output.accept(NomadsDelightBlocks.CURD_BAG.get());
                 output.accept(NomadsDelightItems.ROLLING_PIN.get());
                 output.accept(NomadsDelightItems.HORSE_MILK_BUCKET.get());
@@ -50,7 +50,6 @@ public class Nomads_delight {
                 output.accept(NomadsDelightItems.ZHARMA_BUCKET.get());
                 output.accept(NomadsDelightItems.BUTTER.get());
                 output.accept(NomadsDelightItems.CURD.get());
-                output.accept(NomadsDelightItems.COTTAGE_CHEESE.get());
                 output.accept(NomadsDelightItems.QURT.get());
                 output.accept(NomadsDelightItems.MAYMYZHYK.get());
                 output.accept(NomadsDelightItems.ROLLED_DOUGH.get());
@@ -159,7 +158,7 @@ public class Nomads_delight {
                         generator.getPackOutput(),
                         lookupProvider,
                         event.getExistingFileHelper(),
-                        List.of(new NomadsDelightAdvancementProvider()) // Pass your list of sub-providers here
+                        List.of(new NomadsDelightAdvancementProvider())
                 ));
 
     }

@@ -1,8 +1,8 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.registry;
+package kz.dosyakitarov.nomads_delight.registry;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.Nomads_delight;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.util.CeilingHangingBlock;
-import kz.dosyakitarov.nomadsdelight.nomads_delight.util.TallBlock;
+import kz.dosyakitarov.nomads_delight.Nomads_delight;
+import kz.dosyakitarov.nomads_delight.util.CeilingHangingBlock;
+import kz.dosyakitarov.nomads_delight.util.TallBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
@@ -33,7 +33,7 @@ public class NomadsDelightBlocks {
     public static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         NomadsDelightItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
-    
+
     public static final DeferredBlock<Block> CURD_BAG = registerBlock("curd_bag",
             () -> new CeilingHangingBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.WOOL)
@@ -43,7 +43,7 @@ public class NomadsDelightBlocks {
             )
     );
 
-    public static final DeferredBlock<Block> CHURN = registerBlock("churn",
+    public static final DeferredBlock<Block> BUTTER_CHURN = registerBlock("butter_churn",
             () -> new TallBlock(BlockBehaviour.Properties.of()
                     .sound(SoundType.WOOD)
                     .strength(2.0f)

@@ -1,6 +1,6 @@
-package kz.dosyakitarov.nomadsdelight.nomads_delight.util;
+package kz.dosyakitarov.nomads_delight.util;
 
-import kz.dosyakitarov.nomadsdelight.nomads_delight.registry.NomadsDelightItems;
+import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -87,14 +87,14 @@ public class TallBlock extends Block {
         }
 
         if (currentState == 2) {
-            if (stack.getItem() == Items.BUCKET) {
-                if (milkType == 1) {
+            if (stack.getItem() == Items.BUCKET && milkType != 2) {
+                if (milkType == 0) {
                     if (!level.isClientSide) {
                         stack.shrink(1);
                         player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.QUMYZ_BUCKET.get()));
                     }
                     resetChurnState(level, lowerPos, upperPos, lowerState);
-                } else if (milkType == 2) {
+                } else if (milkType == 1) {
                     if (!level.isClientSide) {
                         stack.shrink(1);
                         player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.SHUBAT_BUCKET.get()));

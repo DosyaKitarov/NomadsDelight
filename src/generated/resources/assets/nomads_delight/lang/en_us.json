@@ -19,8 +19,8 @@
   "advancements.nomads_delight.make_beshbarmak.title": "Five Fingers, One Bowl",
   "advancements.nomads_delight.make_butter.description": "Churn butter.",
   "advancements.nomads_delight.make_butter.title": "Smooth Operator",
-  "advancements.nomads_delight.make_churn.description": "Craft a churn.",
-  "advancements.nomads_delight.make_churn.title": "Churn, Baby, Churn",
+  "advancements.nomads_delight.make_butter_churn.description": "Craft a butter churn.",
+  "advancements.nomads_delight.make_butter_churn.title": "Churn, Baby, Churn",
   "advancements.nomads_delight.make_curd.description": "Put Qatyq in the bag to get fresh curd.",
   "advancements.nomads_delight.make_curd.title": "Drip Dry",
   "advancements.nomads_delight.make_curd_bag.description": "Craft a curd bag and start straining.",
@@ -37,7 +37,7 @@
   "advancements.nomads_delight.milk_horse.title": "Got Milk? (The Hard Way)",
   "advancements.nomads_delight.root.description": "Savor the flavors of the boundless steppe.",
   "advancements.nomads_delight.root.title": "Nomad's Delight",
-  "block.nomads_delight.churn": "Churn",
+  "block.nomads_delight.butter_churn": "Butter Churn",
   "block.nomads_delight.curd_bag": "Curd Bag",
   "item.nomads_delight.achuchuk_salad": "Achuchuk Salad",
   "item.nomads_delight.asip": "Asip",
@@ -49,7 +49,6 @@
   "item.nomads_delight.chicken_samsa": "Chicken Samsa",
   "item.nomads_delight.cooked_horse_meat": "Cooked Horse Meat",
   "item.nomads_delight.cooked_kazy": "Cooked Kazy",
-  "item.nomads_delight.cottage_cheese": "Cottage Cheese",
   "item.nomads_delight.curd": "Curd",
   "item.nomads_delight.dimlama": "Dimlama",
   "item.nomads_delight.flatbread": "Flatbread",
@@ -96,5 +95,9 @@
   "item.nomads_delight.zharma_bucket": "Zharma Bucket",
   "item.nomads_delight.zhayma": "Zhayma",
   "item.nomads_delight.zhent": "Zhent",
-  "itemGroup.nomads_delight": "Nomad's Delight"
+  "itemGroup.nomads_delight": "Nomad's Delight",
+  "jei.nomads_delight.category.churning": "Churning",
+  "jei.nomads_delight.category.churning.time": "Churning time: %s sec.",
+  "jei.nomads_delight.category.straining": "Straining",
+  "jei.nomads_delight.category.straining.time": "Straining time: %s sec."
 }

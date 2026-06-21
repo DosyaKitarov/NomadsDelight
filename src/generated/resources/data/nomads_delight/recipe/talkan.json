@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "nomads_delight:curd"
+      "item": "nomads_delight:roasted_millet"
     }
   ],
   "result": {
     "count": 1,
-    "id": "nomads_delight:qurt"
+    "id": "nomads_delight:talkan"
   }
 }
