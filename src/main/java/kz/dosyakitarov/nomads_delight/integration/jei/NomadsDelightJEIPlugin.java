@@ -70,7 +70,7 @@ public class NomadsDelightJEIPlugin implements IModPlugin {
         List<StrainingRecipe> strainingRecipes = List.of(
                 new StrainingRecipe(
                         new ItemStack(NomadsDelightItems.QATYQ_BUCKET.get()),
-                        new ItemStack(NomadsDelightItems.CURDjei.get()),
+                        new ItemStack(NomadsDelightItems.CURD.get()),
                         2400
                 )
         );
