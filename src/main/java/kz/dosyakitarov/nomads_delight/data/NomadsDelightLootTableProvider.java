@@ -44,6 +44,7 @@ public class NomadsDelightLootTableProvider extends LootTableProvider {
         public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> builder) {
             registerInject(builder, NomadsDelightItems.RAW_HORSE_MEAT.get(), 1.0F, 3.0F);
             registerInject(builder, NomadsDelightItems.HORSE_INTESTINES.get(), 1.0F, 1.0F);
+            registerInject(builder, NomadsDelightItems.COOKED_HORSE_MEAT.get(), 1.0F, 3.0F);
 
         }
 

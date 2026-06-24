@@ -2,10 +2,7 @@ package kz.dosyakitarov.nomads_delight.data;
 
 import kz.dosyakitarov.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
-import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.EntityTypePredicate;
-import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -40,6 +37,16 @@ public class NomadsDelightGLMProvider extends GlobalLootModifierProvider {
                 EntityPredicate.Builder.entity().entityType(EntityTypePredicate.of(EntityType.HORSE))
         ).build();
 
+        LootItemCondition isOnFire = LootItemEntityPropertyCondition.hasProperties(
+                LootContext.EntityTarget.THIS,
+                EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(true))
+        ).build();
+
+        LootItemCondition isNotOnFire = LootItemEntityPropertyCondition.hasProperties(
+                LootContext.EntityTarget.THIS,
+                EntityPredicate.Builder.entity().flags(EntityFlagsPredicate.Builder.flags().setOnFire(false))
+        ).build();
+        
         LootItemCondition needsKnife = LootItemEntityPropertyCondition.hasProperties(
                 LootContext.EntityTarget.ATTACKER,
                 EntityPredicate.Builder.entity().equipment(
@@ -48,7 +55,8 @@ public class NomadsDelightGLMProvider extends GlobalLootModifierProvider {
                                 .build()
                 )
         ).build();
-        addInjectLoot("add_raw_horse_meat_from_horses", NomadsDelightItems.RAW_HORSE_MEAT.get(), killedByPlayer, isHorse);
+        addInjectLoot("add_raw_horse_meat_from_horses", NomadsDelightItems.RAW_HORSE_MEAT.get(), isNotOnFire, isHorse);
+        addInjectLoot("add_cooked_horse_meat_from_horses", NomadsDelightItems.COOKED_HORSE_MEAT.get(), isOnFire, isHorse);
         addInjectLoot("add_horse_intestines_from_horses", NomadsDelightItems.HORSE_INTESTINES.get(), killedByPlayer, isHorse, needsKnife);
     }
 
