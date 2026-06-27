@@ -3,9 +3,8 @@ package kz.dosyakitarov.nomads_delight.data;
 import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
 import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.data.DataGenerator;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class NomadsDelightENLanguageProvider extends LanguageProvider {
+public class NomadsDelightENLanguageProvider extends NomadsDelightMergingLanguageProvider {
     public NomadsDelightENLanguageProvider(DataGenerator generator, String modId, String locale) {
         super(generator.getPackOutput(), modId, locale);
     }
@@ -101,6 +100,8 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         add("tooltip.nomads_delight.effect.comfort", "Comfort");
         add("tooltip.nomads_delight.effect.nourishment", "Nourishment");
         add("tooltip.nomads_delight.effect.regeneration", "Regeneration");
+
+        mergeManualTranslations();
     }
 
     private void addAdvancement(String id, String title, String description) {
