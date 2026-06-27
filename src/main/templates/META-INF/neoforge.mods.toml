@@ -23,9 +23,9 @@ displayName = "${mod_name}" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.neoforge.net/docs/misc/updatechecker/
 #updateJSONURL="https://change.me.example.invalid/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL = "https://github.com/DosyaKitarov/nomads-delight" #optional
+displayURL = "https://github.com/DosyaKitarov/NomadsDelight" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-#logoFile="nomads_delight.png" #optional
+logoFile = "nomads_delight.png" #optional
 # A text field displayed in the mod UI
 #credits="" #optional
 # A text field displayed in the mod UI
@@ -35,7 +35,7 @@ authors = "${mod_authors}" #optional
 description = '''
 A Farmer's Delight addon that brings the rich culinary traditions of the steppe nomads to your Minecraft kitchen.
 
-Adds 50+ traditional dishes and ingredients, 19 new advancements, and two new functional blocks - the Qaltasha storage pouch and the Kubi dairy churn - both built to integrate with Farmer's Delight's cooking and farming systems.
+Adds 50+ traditional dishes and ingredients, 19 new advancements, and two new functional blocks - the Curd Bag storage pouch and the Churn dairy churn - both built to integrate with Farmer's Delight's cooking and farming systems.
 
 Saddle up, fire up the cooking pot, and taste the spirit of the steppes. As bolsyn!
 '''

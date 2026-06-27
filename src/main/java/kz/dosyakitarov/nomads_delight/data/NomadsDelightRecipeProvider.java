@@ -29,17 +29,17 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
         // Ингредиенты с Farmer's Delight
-        Item Dough = vectorwing.farmersdelight.common.registry.ModItems.WHEAT_DOUGH.get();
-        Item PumpkinSlice = vectorwing.farmersdelight.common.registry.ModItems.PUMPKIN_SLICE.get();
-        Item Tomato = vectorwing.farmersdelight.common.registry.ModItems.TOMATO.get();
-        Item Onion = vectorwing.farmersdelight.common.registry.ModItems.ONION.get();
-        Item CabbageLeaf = vectorwing.farmersdelight.common.registry.ModItems.CABBAGE_LEAF.get();
-        Item Rice = vectorwing.farmersdelight.common.registry.ModItems.RICE.get();
-        Item MuttonChops = vectorwing.farmersdelight.common.registry.ModItems.MUTTON_CHOPS.get();
-        Item BeefPatty = vectorwing.farmersdelight.common.registry.ModItems.BEEF_PATTY.get();
-        Item RawPasta = vectorwing.farmersdelight.common.registry.ModItems.RAW_PASTA.get();
+        Item Dough = ModItems.WHEAT_DOUGH.get();
+        Item PumpkinSlice = ModItems.PUMPKIN_SLICE.get();
+        Item Tomato = ModItems.TOMATO.get();
+        Item Onion = ModItems.ONION.get();
+        Item CabbageLeaf = ModItems.CABBAGE_LEAF.get();
+        Item Rice = ModItems.RICE.get();
+        Item MuttonChops = ModItems.MUTTON_CHOPS.get();
+        Item MincedBeef = ModItems.MINCED_BEEF.get();
+        Item RawPasta = ModItems.RAW_PASTA.get();
 
-        Ingredient meatForSamsaAsipAndKespeKozhe = Ingredient.of(
+        Ingredient meatForSamsaAndKespeKozhe = Ingredient.of(
                 Items.MUTTON,
                 Items.BEEF,
                 NomadsDelightItems.RAW_HORSE_MEAT
@@ -85,16 +85,8 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .save(recipeOutput);
 
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.RAW_KAZY)
-                .requires(NomadsDelightItems.HORSE_INTESTINES)
-                .requires(NomadsDelightItems.RAW_HORSE_MEAT)
-                .unlockedBy("has_horse_intestines", has(NomadsDelightItems.HORSE_INTESTINES))
-                .unlockedBy("has_raw_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
-                .save(recipeOutput);
-
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.RAW_SAMSA, 3)
-                .requires(meatForSamsaAsipAndKespeKozhe)
+                .requires(meatForSamsaAndKespeKozhe)
                 .requires(Items.POTATO)
                 .requires(Dough)
                 .unlockedBy("has_dough", has(Dough))
@@ -122,7 +114,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_potato", has(Items.POTATO))
                 .save(recipeOutput);
 
-        Ingredient meatForPeremech = Ingredient.of(
+        Ingredient meatForPeremechAndAsip = Ingredient.of(
                 Items.MUTTON,
                 Items.BEEF
         );
@@ -130,7 +122,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.FOOD, NomadsDelightItems.RAW_PEREMECH, 2)
                 .pattern("DMD")
                 .define('D', Dough)
-                .define('M', meatForPeremech)
+                .define('M', meatForPeremechAndAsip)
                 .unlockedBy("has_dough", has(Dough))
                 .unlockedBy("has_meat", has(Items.MUTTON))
                 .save(recipeOutput);
@@ -161,7 +153,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_rolled_dough", has(NomadsDelightItems.ROLLED_DOUGH))
                 .save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.HALVA)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.HALVA, 2)
                 .requires(Items.WHEAT)
                 .requires(Items.SUGAR)
                 .requires(Items.MILK_BUCKET)
@@ -223,13 +215,6 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .requires(Items.WATER_BUCKET)
                 .unlockedBy("has_qatyq_bucket", has(NomadsDelightItems.QATYQ_BUCKET))
                 .unlockedBy("has_water", has(Items.WATER_BUCKET))
-                .save(recipeOutput);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.MAYMYZHYK)
-                .requires(NomadsDelightItems.TANDOOR_BREAD)
-                .requires(NomadsDelightItems.BUTTER)
-                .unlockedBy("has_butter", has(NomadsDelightItems.BUTTER))
-                .unlockedBy("has_tandoor_bread", has(NomadsDelightItems.TANDOOR_BREAD))
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, NomadsDelightItems.ZHARMA_BUCKET)
@@ -296,7 +281,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 Items.MUTTON,
                 Items.BEEF,
                 NomadsDelightItems.RAW_HORSE_MEAT,
-                NomadsDelightItems.RAW_KAZY
+                NomadsDelightItems.KAZY
         );
 
         CookingPotRecipeBuilder.cookingPotRecipe(
@@ -314,7 +299,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mutton", has(Items.MUTTON))
                 .unlockedBy("has_beef", has(Items.BEEF))
                 .unlockedBy("has_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
-                .unlockedBy("has_kazy", has(NomadsDelightItems.RAW_KAZY))
+                .unlockedBy("has_kazy", has(NomadsDelightItems.KAZY))
                 .unlockedBy("has_water", has(Items.WATER_BUCKET))
                 .unlockedBy("has_onion", has(Onion))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
@@ -337,7 +322,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mutton", has(Items.MUTTON))
                 .unlockedBy("has_beef", has(Items.BEEF))
                 .unlockedBy("has_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
-                .unlockedBy("has_kazy", has(NomadsDelightItems.RAW_KAZY))
+                .unlockedBy("has_kazy", has(NomadsDelightItems.KAZY))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
 
@@ -373,12 +358,12 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         1.0F,
                         Items.BOWL
                 )
-                .addIngredient(BeefPatty)
+                .addIngredient(MincedBeef)
                 .addIngredient(NomadsDelightItems.ROLLED_DOUGH)
                 .addIngredient(Onion)
                 .unlockedBy("has_onion", has(Onion))
                 .unlockedBy("has_rolled_dough", has(NomadsDelightItems.ROLLED_DOUGH))
-                .unlockedBy("has_beef_patty", has(BeefPatty))
+                .unlockedBy("has_beef_patty", has(MincedBeef))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
 
@@ -389,13 +374,13 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         1.0F,
                         Items.BOWL
                 )
-                .addIngredient(BeefPatty)
+                .addIngredient(MincedBeef)
                 .addIngredient(NomadsDelightItems.ROLLED_DOUGH)
                 .addIngredient(Onion)
                 .addIngredient(PumpkinSlice)
                 .unlockedBy("has_onion", has(Onion))
                 .unlockedBy("has_rolled_dough", has(NomadsDelightItems.ROLLED_DOUGH))
-                .unlockedBy("has_beef_patty", has(BeefPatty))
+                .unlockedBy("has_beef_patty", has(MincedBeef))
                 .unlockedBy("has_pumpkin_slice", has(PumpkinSlice))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
@@ -474,14 +459,39 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         200,
                         1.0F
                 )
-                .addIngredient(meatForSamsaAsipAndKespeKozhe)
+                .addIngredient(meatForPeremechAndAsip)
                 .addIngredient(Rice)
                 .addIngredient(NomadsDelightItems.HORSE_INTESTINES)
                 .unlockedBy("has_rice", has(Rice))
                 .unlockedBy("has_horse_intestines", has(NomadsDelightItems.HORSE_INTESTINES))
                 .unlockedBy("has_mutton", has(Items.MUTTON))
                 .unlockedBy("has_beef", has(Items.BEEF))
-                .unlockedBy("has_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .save(recipeOutput);
+
+        CookingPotRecipeBuilder.cookingPotRecipe(
+                        NomadsDelightItems.QARTA,
+                        1,
+                        200,
+                        1.0F
+                )
+                .addIngredient(Onion)
+                .addIngredient(NomadsDelightItems.HORSE_INTESTINES)
+                .unlockedBy("has_rice", has(Rice))
+                .unlockedBy("has_horse_intestines", has(NomadsDelightItems.HORSE_INTESTINES))
+                .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
+                .save(recipeOutput);
+
+        CookingPotRecipeBuilder.cookingPotRecipe(
+                        NomadsDelightItems.KAZY,
+                        1,
+                        200,
+                        1.0F
+                )
+                .addIngredient(NomadsDelightItems.RAW_HORSE_MEAT)
+                .addIngredient(NomadsDelightItems.HORSE_INTESTINES)
+                .unlockedBy("has_raw_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
+                .unlockedBy("has_horse_intestines", has(NomadsDelightItems.HORSE_INTESTINES))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
 
@@ -505,7 +515,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_mutton", has(Items.MUTTON))
                 .unlockedBy("has_beef", has(Items.BEEF))
                 .unlockedBy("has_horse_meat", has(NomadsDelightItems.RAW_HORSE_MEAT))
-                .unlockedBy("has_kazy", has(NomadsDelightItems.RAW_KAZY))
+                .unlockedBy("has_kazy", has(NomadsDelightItems.KAZY))
                 .setRecipeBookTab(CookingPotRecipeBookTab.MEALS)
                 .save(recipeOutput);
 
@@ -516,7 +526,7 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
                         1.0F,
                         Items.BOWL
                 )
-                .addIngredient(meatForSamsaAsipAndKespeKozhe)
+                .addIngredient(meatForSamsaAndKespeKozhe)
                 .addIngredient(Items.POTATO)
                 .addIngredient(Items.WATER_BUCKET)
                 .addIngredient(RawPasta)
@@ -565,8 +575,6 @@ public class NomadsDelightRecipeProvider extends RecipeProvider {
         registerCookingRecipes(NomadsDelightItems.RAW_KATTAMA, NomadsDelightItems.KATTAMA, 0.35f, recipeOutput);
         registerCookingRecipes(NomadsDelightItems.RAW_FLATBREAD, NomadsDelightItems.FLATBREAD, 0.35f, recipeOutput);
         registerCookingRecipes(NomadsDelightItems.RAW_BAURSAKS, NomadsDelightItems.BAURSAKS, 0.35f, recipeOutput);
-        registerCookingRecipes(NomadsDelightItems.RAW_KAZY, NomadsDelightItems.COOKED_KAZY, 0.35f, recipeOutput);
-        registerCookingRecipes(NomadsDelightItems.HORSE_INTESTINES, NomadsDelightItems.QARTA, 0.35f, recipeOutput);
         registerCookingRecipes(Items.MILK_BUCKET, NomadsDelightItems.QATYQ_BUCKET, 0.35f, recipeOutput);
     }
 

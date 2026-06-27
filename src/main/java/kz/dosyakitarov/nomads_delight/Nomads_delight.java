@@ -51,13 +51,13 @@ public class Nomads_delight {
                 output.accept(NomadsDelightItems.BUTTER.get());
                 output.accept(NomadsDelightItems.CURD.get());
                 output.accept(NomadsDelightItems.QURT.get());
-                output.accept(NomadsDelightItems.MAYMYZHYK.get());
-                output.accept(NomadsDelightItems.ROLLED_DOUGH.get());
-                output.accept(NomadsDelightItems.ZHAYMA.get());
                 output.accept(NomadsDelightItems.ROASTED_MILLET.get());
                 output.accept(NomadsDelightItems.TALKAN.get());
                 output.accept(NomadsDelightItems.READY_MADE_TALKAN.get());
 
+                output.accept(NomadsDelightItems.ROLLED_DOUGH.get());
+                output.accept(NomadsDelightItems.ZHAYMA.get());
+                
                 output.accept(NomadsDelightItems.RAW_SAMSA.get());
                 output.accept(NomadsDelightItems.SAMSA.get());
 
@@ -88,8 +88,7 @@ public class Nomads_delight {
 
                 output.accept(NomadsDelightItems.HORSE_INTESTINES.get());
 
-                output.accept(NomadsDelightItems.RAW_KAZY.get());
-                output.accept(NomadsDelightItems.COOKED_KAZY.get());
+                output.accept(NomadsDelightItems.KAZY.get());
                 output.accept(NomadsDelightItems.ASIP.get());
                 output.accept(NomadsDelightItems.QARTA.get());
 

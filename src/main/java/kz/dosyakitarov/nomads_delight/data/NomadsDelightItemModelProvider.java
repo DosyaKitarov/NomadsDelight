@@ -35,8 +35,7 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
         tryBasicItem(NomadsDelightItems.LAGHMAN.get());
         tryBasicItem(NomadsDelightItems.KAZAN_KEBAB.get());
         tryBasicItem(NomadsDelightItems.ASIP.get());
-        tryBasicItem(NomadsDelightItems.RAW_KAZY.get());
-        tryBasicItem(NomadsDelightItems.COOKED_KAZY.get());
+        tryBasicItem(NomadsDelightItems.KAZY.get());
         tryBasicItem(NomadsDelightItems.QARTA.get());
         tryBasicItem(NomadsDelightItems.SORPA.get());
         tryBasicItem(NomadsDelightItems.KESPE_KOZHE.get());
@@ -62,7 +61,6 @@ public class NomadsDelightItemModelProvider extends ItemModelProvider {
         tryBasicItem(NomadsDelightItems.QATYQ_BUCKET.get());
         tryBasicItem(NomadsDelightItems.QURT.get());
         tryBasicItem(NomadsDelightItems.AYRAN_BUCKET.get());
-        tryBasicItem(NomadsDelightItems.MAYMYZHYK.get());
         tryBasicItem(NomadsDelightItems.CURD.get());
         tryBasicItem(NomadsDelightItems.ZHARMA_BUCKET.get());
         tryBasicItem(NomadsDelightItems.ACHUCHUK_SALAD.get());

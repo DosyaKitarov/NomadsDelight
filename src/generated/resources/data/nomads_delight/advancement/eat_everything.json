@@ -73,14 +73,6 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "consume_cooked_kazy": {
-      "conditions": {
-        "item": {
-          "items": "nomads_delight:cooked_kazy"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
     "consume_curd": {
       "conditions": {
         "item": {
@@ -137,6 +129,14 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "consume_kazy": {
+      "conditions": {
+        "item": {
+          "items": "nomads_delight:kazy"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "consume_kespe_kozhe": {
       "conditions": {
         "item": {
@@ -173,14 +173,6 @@
       "conditions": {
         "item": {
           "items": "nomads_delight:manti"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "consume_maymyzhyk": {
-      "conditions": {
-        "item": {
-          "items": "nomads_delight:maymyzhyk"
         }
       },
       "trigger": "minecraft:consume_item"
@@ -269,14 +261,6 @@
       "conditions": {
         "item": {
           "items": "nomads_delight:raw_horse_meat"
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "consume_raw_kazy": {
-      "conditions": {
-        "item": {
-          "items": "nomads_delight:raw_kazy"
         }
       },
       "trigger": "minecraft:consume_item"
@@ -410,7 +394,7 @@
       "consume_cooked_horse_meat"
     ],
     [
-      "consume_cooked_kazy"
+      "consume_kazy"
     ],
     [
       "consume_qarta"
@@ -470,13 +454,7 @@
       "consume_zhent"
     ],
     [
-      "consume_maymyzhyk"
-    ],
-    [
       "consume_raw_horse_meat"
-    ],
-    [
-      "consume_raw_kazy"
     ]
   ],
   "sends_telemetry_event": true

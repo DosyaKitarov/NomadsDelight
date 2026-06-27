@@ -5,6 +5,7 @@ import kz.dosyakitarov.nomads_delight.util.JsonReader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffect;
@@ -36,7 +37,7 @@ public class NomadsDelightItems {
     public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .build())));
-    
+
     public static final DeferredItem<Item> RAW_HORSE_MEAT = ITEMS.register("raw_horse_meat",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
                     .nutrition(FOODS_JSON.getNutrition("raw_horse_meat"))
@@ -87,7 +88,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable("tooltip.nomads_delight.removes_effects").withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -133,7 +134,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -177,7 +178,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable("tooltip.nomads_delight.removes_effects").withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -218,7 +219,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -282,7 +283,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -310,7 +311,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 300).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -337,7 +338,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -364,7 +365,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 300).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -392,7 +393,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -419,7 +420,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -446,7 +447,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 300)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 300).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -473,7 +474,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -500,7 +501,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -527,25 +528,17 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
             });
 
-    public static final DeferredItem<Item> RAW_KAZY = ITEMS.register("raw_kazy",
+    public static final DeferredItem<Item> KAZY = ITEMS.register("kazy",
             () -> new Item(new Item.Properties()
                     .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("raw_kazy"))
-                            .saturationModifier(FOODS_JSON.getSaturation("raw_kazy"))
-                            .build())
-            ));
-
-    public static final DeferredItem<Item> COOKED_KAZY = ITEMS.register("cooked_kazy",
-            () -> new Item(new Item.Properties()
-                    .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("cooked_kazy"))
-                            .saturationModifier(FOODS_JSON.getSaturation("cooked_kazy"))
+                            .nutrition(FOODS_JSON.getNutrition("kazy"))
+                            .saturationModifier(FOODS_JSON.getSaturation("kazy"))
                             .build())
             ) {
                 @Override
@@ -561,7 +554,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -587,7 +580,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -614,7 +607,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -641,7 +634,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 180)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 180).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -671,7 +664,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -700,7 +693,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -731,7 +724,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -762,7 +755,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -792,7 +785,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -823,7 +816,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -853,7 +846,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -884,7 +877,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -910,7 +903,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -936,7 +929,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -962,7 +955,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1002,7 +995,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable("Removes All Effects").withStyle(ChatFormatting.BLUE));
+                    tooltip.add(Component.translatable("tooltip.nomads_delight.removes_effects").withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1030,7 +1023,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1071,38 +1064,12 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 120)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 120).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
             }
     );
-
-    public static final DeferredItem<Item> MAYMYZHYK = ITEMS.register("maymyzhyk",
-            () -> new Item(new Item.Properties()
-                    .food(new FoodProperties.Builder()
-                            .nutrition(FOODS_JSON.getNutrition("maymyzhyk"))
-                            .saturationModifier(FOODS_JSON.getSaturation("maymyzhyk"))
-                            .build())
-            ) {
-                @Override
-                public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
-                    ItemStack result = super.finishUsingItem(stack, level, entity);
-
-                    if (!level.isClientSide) {
-                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
-                    }
-
-                    return result;
-                }
-
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
-
-                    super.appendHoverText(stack, context, tooltip, flag);
-                }
-            });
 
     public static final DeferredItem<Item> CURD = ITEMS.register("curd",
             () -> new Item(new Item.Properties()
@@ -1124,7 +1091,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1163,7 +1130,7 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.NOURISHMENT, 60)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.NOURISHMENT, 60).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1172,6 +1139,7 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> ACHUCHUK_SALAD = ITEMS.register("achuchuk_salad",
             () -> new Item(new Item.Properties()
+                    .stacksTo(16)
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("achuchuk_salad"))
                             .saturationModifier(FOODS_JSON.getSaturation("achuchuk_salad"))
@@ -1183,7 +1151,6 @@ public class NomadsDelightItems {
                     ItemStack result = super.finishUsingItem(stack, level, entity);
 
                     if (!level.isClientSide) {
-                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
                         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
                     }
 
@@ -1192,8 +1159,8 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
-                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(MobEffects.REGENERATION, 5).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1201,6 +1168,7 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> MEAT_SALAD = ITEMS.register("meat_salad",
             () -> new Item(new Item.Properties()
+                    .stacksTo(16)
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("meat_salad"))
                             .saturationModifier(FOODS_JSON.getSaturation("meat_salad"))
@@ -1221,8 +1189,8 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
-                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(MobEffects.REGENERATION, 5).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1230,6 +1198,7 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> MORKOVCHA_SALAD = ITEMS.register("morkovcha_salad",
             () -> new Item(new Item.Properties()
+                    .stacksTo(16)
                     .food(new FoodProperties.Builder()
                             .nutrition(FOODS_JSON.getNutrition("morkovcha_salad"))
                             .saturationModifier(FOODS_JSON.getSaturation("morkovcha_salad"))
@@ -1241,7 +1210,6 @@ public class NomadsDelightItems {
                     ItemStack result = super.finishUsingItem(stack, level, entity);
 
                     if (!level.isClientSide) {
-                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
                         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
                     }
 
@@ -1250,8 +1218,8 @@ public class NomadsDelightItems {
 
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
-                    tooltip.add(Component.translatable(getToolTipName(ModEffects.COMFORT, 60)).withStyle(ChatFormatting.BLUE));
-                    tooltip.add(Component.translatable(getToolTipName(MobEffects.REGENERATION, 5)).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(ModEffects.COMFORT, 60).withStyle(ChatFormatting.BLUE));
+                    tooltip.add(getToolTipComponent(MobEffects.REGENERATION, 5).withStyle(ChatFormatting.BLUE));
 
                     super.appendHoverText(stack, context, tooltip, flag);
                 }
@@ -1262,15 +1230,14 @@ public class NomadsDelightItems {
         ITEMS.register(eventBus);
     }
 
-    private static String getToolTipName(Holder<MobEffect> Effect, int duration) {
-        String[] split = Effect.getRegisteredName().split(":");
+    private static MutableComponent getToolTipComponent(Holder<MobEffect> effect, int duration) {
+        String[] split = effect.getRegisteredName().split(":");
+        String effectId = split[split.length - 1];
         int minutes = duration / 60;
         int seconds = duration % 60;
-        String EffectName = split[split.length - 1];
-        if (EffectName != null && !EffectName.isEmpty()) {
-            EffectName = EffectName.substring(0, 1).toUpperCase() + EffectName.substring(1);
-        }
-        return String.format("%s (%d:%02d)", EffectName, minutes, seconds);
+        return Component.translatable("tooltip.nomads_delight.effect_format",
+                Component.translatable("tooltip.nomads_delight.effect." + effectId),
+                String.format("%d:%02d", minutes, seconds));
     }
 
 }

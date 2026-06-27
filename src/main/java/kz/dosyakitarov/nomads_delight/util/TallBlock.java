@@ -101,12 +101,13 @@ public class TallBlock extends Block {
                     }
                     resetChurnState(level, lowerPos, upperPos, lowerState);
                 }
-                level.playSound(null, lowerPos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
+                level.playSound(null, lowerPos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS);
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            if (milkType == 2) {
+            if (milkType == 2 && stack.getItem() == Items.BOWL) {
                 if (!level.isClientSide) {
+                    stack.shrink(1);
                     player.getInventory().placeItemBackInInventory(new ItemStack(NomadsDelightItems.BUTTER.get()));
                 }
                 resetChurnState(level, lowerPos, upperPos, lowerState);
@@ -244,12 +245,12 @@ public class TallBlock extends Block {
         if (random.nextFloat() < 0.5F) {
             if (level.isClientSide() && state.getValue(CHURN_STATE) == 2) {
                 double x = pos.getX() + random.nextDouble();
-                double y = pos.getY();
+                double y = pos.getY() + 1;
                 double z = pos.getZ() + random.nextDouble();
-                double r = 1.0;
-                double g = 0.894;
-                double b = 0.659;
-                level.addParticle(ParticleTypes.EFFECT, x, y, z, r, g, b);
+                double xSpeed = 1.0;
+                double ySpeed = 1.0;
+                double zSpeed = 1.0;
+                level.addParticle(ParticleTypes.EFFECT, x, y, z, xSpeed, ySpeed, zSpeed);
             }
         }
     }

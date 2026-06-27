@@ -38,8 +38,7 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.LAGHMAN.get(), "Laghman");
         add(NomadsDelightItems.KAZAN_KEBAB.get(), "Kazan Kebab");
         add(NomadsDelightItems.ASIP.get(), "Asip");
-        add(NomadsDelightItems.RAW_KAZY.get(), "Raw Kazy");
-        add(NomadsDelightItems.COOKED_KAZY.get(), "Cooked Kazy");
+        add(NomadsDelightItems.KAZY.get(), "Kazy");
         add(NomadsDelightItems.QARTA.get(), "Qarta");
         add(NomadsDelightItems.SORPA.get(), "Sorpa");
         add(NomadsDelightItems.KESPE_KOZHE.get(), "Kespe Kozhe");
@@ -65,7 +64,6 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.QATYQ_BUCKET.get(), "Qatуq Bucket");
         add(NomadsDelightItems.QURT.get(), "Qurt");
         add(NomadsDelightItems.AYRAN_BUCKET.get(), "Ayran Bucket");
-        add(NomadsDelightItems.MAYMYZHYK.get(), "Maymyzhyk");
         add(NomadsDelightItems.CURD.get(), "Curd");
         add(NomadsDelightItems.ZHARMA_BUCKET.get(), "Zharma Bucket");
         add(NomadsDelightItems.ACHUCHUK_SALAD.get(), "Achuchuk Salad");
@@ -80,7 +78,7 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
         addAdvancement("get_drunk", "Steppe Stumble", "Drink enough qymyz to feel the world spin a little.");
         addAdvancement("make_butter", "Smooth Operator", "Churn butter.");
         addAdvancement("make_rolling_pin", "Tung Tung Tung Sahur", "Craft a rolling pin.");
-        addAdvancement("bonk", "Bonk", "Defeat a mob with a rolling pin.");
+        addAdvancement("bonk", "Bonk!", "Defeat a mob with a rolling pin.");
         addAdvancement("make_zhayma", "Cut the Roll", "Cut out some zhayma.");
         addAdvancement("make_beshbarmak", "Five Fingers, One Bowl", "Cook a hearty plate of beshbarmak.");
         addAdvancement("milk_horse", "Got Milk? (The Hard Way)", "Milk a horse. No, that's not a typo.");
@@ -97,6 +95,12 @@ public class NomadsDelightENLanguageProvider extends LanguageProvider {
 
         add("jei.nomads_delight.category.straining", "Straining");
         add("jei.nomads_delight.category.straining.time", "Straining time: %s sec.");
+
+        add("tooltip.nomads_delight.removes_effects", "Removes All Effects");
+        add("tooltip.nomads_delight.effect_format", "%s (%s)");
+        add("tooltip.nomads_delight.effect.comfort", "Comfort");
+        add("tooltip.nomads_delight.effect.nourishment", "Nourishment");
+        add("tooltip.nomads_delight.effect.regeneration", "Regeneration");
     }
 
     private void addAdvancement(String id, String title, String description) {

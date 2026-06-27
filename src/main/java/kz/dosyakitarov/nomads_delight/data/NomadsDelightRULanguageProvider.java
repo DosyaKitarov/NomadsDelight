@@ -12,7 +12,7 @@ public class NomadsDelightRULanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup.nomads_delight", "Радость кочевника");
+        add("itemGroup.nomads_delight", "Восторг кочевника");
         add(NomadsDelightBlocks.CURD_BAG.get(), "Мешочек");
         add(NomadsDelightBlocks.BUTTER_CHURN.get(), "Маслобойка");
         add(NomadsDelightItems.QUMYZ_BUCKET.get(), "Ведро кумыса");
@@ -34,12 +34,11 @@ public class NomadsDelightRULanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.KUURDAK.get(), "Куырдак");
         add(NomadsDelightItems.MANTI.get(), "Манты");
         add(NomadsDelightItems.KHANUM.get(), "Ханум");
-        add(NomadsDelightItems.DIMLAMA.get(), "Дымляма");
+        add(NomadsDelightItems.DIMLAMA.get(), "Димляма");
         add(NomadsDelightItems.LAGHMAN.get(), "Лагман");
         add(NomadsDelightItems.KAZAN_KEBAB.get(), "Казан-кебаб");
         add(NomadsDelightItems.ASIP.get(), "Асип");
-        add(NomadsDelightItems.RAW_KAZY.get(), "Сырой казы");
-        add(NomadsDelightItems.COOKED_KAZY.get(), "Готовый казы");
+        add(NomadsDelightItems.KAZY.get(), "Казы");
         add(NomadsDelightItems.QARTA.get(), "Карта");
         add(NomadsDelightItems.SORPA.get(), "Сорпа");
         add(NomadsDelightItems.KESPE_KOZHE.get(), "Кеспе-коже");
@@ -65,17 +64,16 @@ public class NomadsDelightRULanguageProvider extends LanguageProvider {
         add(NomadsDelightItems.QATYQ_BUCKET.get(), "Ведро катыка");
         add(NomadsDelightItems.QURT.get(), "Курт");
         add(NomadsDelightItems.AYRAN_BUCKET.get(), "Ведро айрана");
-        add(NomadsDelightItems.MAYMYZHYK.get(), "Маймыжик");
         add(NomadsDelightItems.CURD.get(), "Творожная масса");
         add(NomadsDelightItems.ZHARMA_BUCKET.get(), "Ведро жармы");
         add(NomadsDelightItems.ACHUCHUK_SALAD.get(), "Салат Ачучук");
         add(NomadsDelightItems.MEAT_SALAD.get(), "Мясной салат");
-        add(NomadsDelightItems.MORKOVCHA_SALAD.get(), "Салам Морковка");
+        add(NomadsDelightItems.MORKOVCHA_SALAD.get(), "Салат Морковча");
 
         addAdvancement("root", "Радость кочевника", "Вкусите незабываемые ароматы бескрайней степи.");
-        addAdvancement("make_curd_bag", "Свежий отжим", "Сделайте мешок для сцеживания сыворотки и начните фильтрацию.");
+        addAdvancement("make_curd_bag", "Хот свап?", "Сделайте мешок для сцеживания сыворотки и начните фильтрацию.");
         addAdvancement("make_curd", "Сухой остаток", "Залейте катык в мешок, чтобы отцедить свежую творожную массу.");
-        addAdvancement("make_churn", "Крути-верти", "Смастерите маслобойку.");
+        addAdvancement("make_butter_churn", "Крути-верти", "Смастерите маслобойку.");
         addAdvancement("make_shubat_or_qymyz", "Белое золото", "Приготовьте шубат или кумыс в маслобойке.");
         addAdvancement("get_drunk", "Степная качка", "Выпейте столько кумыса, чтобы мир вокруг слегка закружился.");
         addAdvancement("make_butter", "Как по маслу", "Сбейте немного сливочного масла.");
@@ -91,6 +89,18 @@ public class NomadsDelightRULanguageProvider extends LanguageProvider {
         addAdvancement("eat_everything", "Сверхчеловек", "Попробуйте абсолютно всё — устройте настоящий пир кочевников.");
         addAdvancement("eat_any_bread", "Ешь с хлебом! Будешь сыт.", "Сделайте кусь любой традиционной лепёшки. Хлеб — всему голова!");
         addAdvancement("eat_horse_on_horse", "Вкусный транспорт", "Есть конину... сидя на коне? Как-то иронично.");
+
+        add("jei.nomads_delight.category.churning", "Взбивание");
+        add("jei.nomads_delight.category.churning.time", "Время взбивания: %s сек.");
+
+        add("jei.nomads_delight.category.straining", "Процеживание");
+        add("jei.nomads_delight.category.straining.time", "Время процеживания: %s сек.");
+
+        add("tooltip.nomads_delight.removes_effects", "Снимает все эффекты");
+        add("tooltip.nomads_delight.effect_format", "%s (%s)");
+        add("tooltip.nomads_delight.effect.comfort", "Комфорт");
+        add("tooltip.nomads_delight.effect.nourishment", "Сытость");
+        add("tooltip.nomads_delight.effect.regeneration", "Регенерация");
     }
 
     private void addAdvancement(String id, String title, String description) {

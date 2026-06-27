@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cooking",
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "nomads_delight:raw_horse_meat"
+    },
+    {
+      "item": "nomads_delight:horse_intestines"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "count": 1,
+    "id": "nomads_delight:kazy"
+  }
+}

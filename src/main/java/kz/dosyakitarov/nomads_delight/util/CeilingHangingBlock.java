@@ -31,8 +31,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class CeilingHangingBlock extends Block {
-    protected static final VoxelShape AABB = makeShape();
-
     public static final IntegerProperty BAG_STATE = IntegerProperty.create("bag_state", 0, 2);
 
     @Override
@@ -47,7 +45,7 @@ public class CeilingHangingBlock extends Block {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return AABB;
+        return makeShape();
     }
 
     @Override
@@ -92,7 +90,6 @@ public class CeilingHangingBlock extends Block {
                 Block.popResource(level, pos, new ItemStack(NomadsDelightItems.CURD.get()));
                 level.setBlock(pos, state.setValue(BAG_STATE, 0), 3);
             }
-            //play sound
             level.playSound(null, pos, SoundEvents.SLIME_BLOCK_BREAK, SoundSource.BLOCKS);
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }

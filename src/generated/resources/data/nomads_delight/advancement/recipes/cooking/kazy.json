@@ -1,21 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_butter": {
+    "has_horse_intestines": {
       "conditions": {
         "items": [
           {
-            "items": "nomads_delight:butter"
+            "items": "nomads_delight:horse_intestines"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_tandoor_bread": {
+    "has_raw_horse_meat": {
       "conditions": {
         "items": [
           {
-            "items": "nomads_delight:tandoor_bread"
+            "items": "nomads_delight:raw_horse_meat"
           }
         ]
       },
@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nomads_delight:maymyzhyk"
+        "recipe": "nomads_delight:cooking/kazy"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -31,13 +31,13 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_butter",
-      "has_tandoor_bread"
+      "has_raw_horse_meat",
+      "has_horse_intestines"
     ]
   ],
   "rewards": {
     "recipes": [
-      "nomads_delight:maymyzhyk"
+      "nomads_delight:cooking/kazy"
     ]
   }
 }

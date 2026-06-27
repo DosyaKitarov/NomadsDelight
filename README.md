@@ -2,15 +2,15 @@
 
 <!-- 
 <a href="link to modrinth">
-  <img src="http://cf.way2muchnoise.eu/full_nomads_delight_downloads.svg" alt="Curseforge Downloads"> ДОБАВИТЬ
+  <img src="http://cf.way2muchnoise.eu/full_nomads_delight_downloads.svg" alt="Curseforge Downloads"> 
 </a>
 <br>
-<img src="banner_link.png]" width="50%"> ДОБАВИТЬ
 -->
+<img src="src/main/resources/nomads_delight.png">
 
 ## Overview
 
-A [Farmer's Delight](https://www.curseforge.com/minecraft/mc-mods/farmers-delight) addon that brings the rich, hearty
+A [Farmer's Delight](https://modrinth.com/mod/farmers-delight) addon that brings the rich, hearty
 culinary traditions of the Central Asian steppe nomads to your Minecraft kitchen.
 
 Embrace nomadic life with food built for the road: traditional dishes, ingredients, and storage solutions inspired by

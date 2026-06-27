@@ -5,6 +5,7 @@ import kz.dosyakitarov.nomads_delight.registry.NomadsDelightBlocks;
 import kz.dosyakitarov.nomads_delight.registry.NomadsDelightItems;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.EffectsChangedTrigger;
+import net.minecraft.advancements.critereon.ImpossibleTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.MobEffectsPredicate;
 import net.minecraft.core.HolderLookup;
@@ -23,11 +24,10 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
 
     private static final String MODID = Nomads_delight.MODID;
     private static final ResourceLocation ROOT_BACKGROUND =
-            ResourceLocation.fromNamespaceAndPath(Nomads_delight.MODID, "textures/block/green_grass.png");
+            ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/dirt.png");
 
     public static final String BONK_CRITERION = "killed_with_rolling_pin";
 
-    // --- Helper for creating language keys safely ---
     public static String titleKey(String id) {
         return "advancements." + MODID + "." + id + ".title";
     }
@@ -52,7 +52,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
         );
 
         adv(saver, root, "eat_horse_on_horse",
-                NomadsDelightItems.COOKED_KAZY.get(), AdvancementType.TASK, false, null,
+                NomadsDelightItems.KAZY.get(), AdvancementType.TASK, false, null,
                 AdvancementRequirements.Strategy.OR,
                 b -> {
                     net.minecraft.advancements.critereon.ContextAwarePredicate playerPredicate =
@@ -65,7 +65,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                             new net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance(
                                     Optional.of(playerPredicate),
                                     Optional.of(net.minecraft.advancements.critereon.ItemPredicate.Builder.item()
-                                            .of(NomadsDelightItems.COOKED_KAZY.get()).build())
+                                            .of(NomadsDelightItems.KAZY.get()).build())
                             )
                     ));
 
@@ -140,11 +140,12 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                 AdvancementRequirements.Strategy.AND,
                 b -> b.addCriterion("has_rolling_pin", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.ROLLING_PIN.get()))
         );
-
-        adv(saver, makeRollingPin, "bonk",
+        adv(
+                saver, makeRollingPin, "bonk",
                 NomadsDelightItems.ROLLING_PIN.get(), AdvancementType.TASK, false, null,
                 AdvancementRequirements.Strategy.AND,
-                b -> b.addCriterion(BONK_CRITERION, net.minecraft.advancements.critereon.KilledTrigger.TriggerInstance.playerKilledEntity())
+                b -> b.addCriterion(BONK_CRITERION, CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance()
+                ))
         );
 
         adv(saver, makeRollingPin, "eat_any_bread",
@@ -201,7 +202,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                     b.addCriterion("has_kazan_kebab", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.KAZAN_KEBAB.get()));
                     b.addCriterion("has_sorpa", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.SORPA.get()));
                     b.addCriterion("has_asip", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.ASIP.get()));
-                    b.addCriterion("has_cooked_kazy", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.COOKED_KAZY.get()));
+                    b.addCriterion("has_cooked_kazy", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.KAZY.get()));
                     b.addCriterion("has_qarta", InventoryChangeTrigger.TriggerInstance.hasItems(NomadsDelightItems.QARTA.get()));
                 }
         );
@@ -243,7 +244,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                     b.addCriterion("consume_asip", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.ASIP.get()));
 
                     b.addCriterion("consume_cooked_horse_meat", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.COOKED_HORSE_MEAT.get()));
-                    b.addCriterion("consume_cooked_kazy", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.COOKED_KAZY.get()));
+                    b.addCriterion("consume_kazy", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.KAZY.get()));
                     b.addCriterion("consume_qarta", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.QARTA.get()));
 
                     b.addCriterion("consume_samsa", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.SAMSA.get()));
@@ -266,10 +267,8 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
                     b.addCriterion("consume_halva", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.HALVA.get()));
                     b.addCriterion("consume_maysok", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.MAYSOK.get()));
                     b.addCriterion("consume_zhent", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.ZHENT.get()));
-                    b.addCriterion("consume_maymyzhyk", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.MAYMYZHYK.get()));
 
                     b.addCriterion("consume_raw_horse_meat", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.RAW_HORSE_MEAT.get()));
-                    b.addCriterion("consume_raw_kazy", net.minecraft.advancements.critereon.ConsumeItemTrigger.TriggerInstance.usedItem(NomadsDelightItems.RAW_KAZY.get()));
                 }
         );
     }

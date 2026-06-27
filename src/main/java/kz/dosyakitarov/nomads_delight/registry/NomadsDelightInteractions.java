@@ -4,6 +4,7 @@ import kz.dosyakitarov.nomads_delight.Nomads_delight;
 import kz.dosyakitarov.nomads_delight.data.NomadsDelightAdvancementProvider;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -72,21 +73,33 @@ public class NomadsDelightInteractions {
             return;
         }
 
-        if (event.getSource().getEntity() instanceof ServerPlayer player) {
-            ItemStack weapon = player.getMainHandItem();
-            if (weapon.is(NomadsDelightItems.ROLLING_PIN.get())) {
-                var server = player.getServer();
-                if (server == null) {
-                    return;
-                }
+        if (!(event.getSource().getEntity() instanceof ServerPlayer player)) {
+            return;
+        }
 
-                AdvancementHolder bonk = server.getAdvancements()
-                        .get(ResourceLocation.fromNamespaceAndPath(Nomads_delight.MODID, "bonk"));
+        ItemStack weapon = event.getSource().getWeaponItem();
 
-                if (bonk != null) {
-                    player.getAdvancements().award(bonk, NomadsDelightAdvancementProvider.BONK_CRITERION);
-                }
-            }
+        if (weapon.isEmpty() || !weapon.is(NomadsDelightItems.ROLLING_PIN.get())) {
+            return;
+        }
+
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return;
+        }
+
+        AdvancementHolder advancement = server.getAdvancements().get(
+                ResourceLocation.fromNamespaceAndPath(
+                        Nomads_delight.MODID,
+                        "bonk"
+                )
+        );
+
+        if (advancement != null) {
+            player.getAdvancements().award(
+                    advancement,
+                    NomadsDelightAdvancementProvider.BONK_CRITERION
+            );
         }
     }
 }

@@ -2,7 +2,7 @@
   "parent": "nomads_delight:make_rolling_pin",
   "criteria": {
     "killed_with_rolling_pin": {
-      "trigger": "minecraft:player_killed_entity"
+      "trigger": "minecraft:impossible"
     }
   },
   "display": {

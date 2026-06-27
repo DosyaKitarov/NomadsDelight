@@ -6,7 +6,7 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "nomads_delight:textures/block/green_grass.png",
+    "background": "minecraft:textures/block/dirt.png",
     "description": {
       "translate": "advancements.nomads_delight.root.description"
     },

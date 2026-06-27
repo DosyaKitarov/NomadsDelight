@@ -21,16 +21,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_horse_meat": {
-      "conditions": {
-        "items": [
-          {
-            "items": "nomads_delight:raw_horse_meat"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_mutton": {
       "conditions": {
         "items": [
@@ -64,8 +54,7 @@
       "has_rice",
       "has_horse_intestines",
       "has_mutton",
-      "has_beef",
-      "has_horse_meat"
+      "has_beef"
     ]
   ],
   "rewards": {
