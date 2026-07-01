@@ -18,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredItem;
+import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.List;
@@ -36,6 +37,8 @@ public class NomadsDelightItems {
 
     public static final DeferredItem<Item> BUTTER = ITEMS.register("butter",
             () -> new Item(new Item.Properties().food(new FoodProperties.Builder()
+                    .nutrition(FOODS_JSON.getNutrition("butter"))
+                    .saturationModifier(FOODS_JSON.getSaturation("butter"))
                     .build())));
 
     public static final DeferredItem<Item> RAW_HORSE_MEAT = ITEMS.register("raw_horse_meat",
@@ -1015,7 +1018,7 @@ public class NomadsDelightItems {
                     ItemStack result = super.finishUsingItem(stack, level, entity);
 
                     if (!level.isClientSide) {
-                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
+                        entity.addEffect(new MobEffectInstance(ModEffects.NOURISHMENT, 600, 0));
                     }
 
                     return result;
@@ -1151,6 +1154,7 @@ public class NomadsDelightItems {
                     ItemStack result = super.finishUsingItem(stack, level, entity);
 
                     if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
                         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
                     }
 
@@ -1210,6 +1214,7 @@ public class NomadsDelightItems {
                     ItemStack result = super.finishUsingItem(stack, level, entity);
 
                     if (!level.isClientSide) {
+                        entity.addEffect(new MobEffectInstance(ModEffects.COMFORT, 1200, 0));
                         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 0));
                     }
 
