@@ -27,6 +27,8 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
             ResourceLocation.fromNamespaceAndPath("minecraft", "textures/block/dirt.png");
 
     public static final String BONK_CRITERION = "killed_with_rolling_pin";
+    public static final String DRUNK_CRITERION = "get_drunk";
+
 
     public static String titleKey(String id) {
         return "advancements." + MODID + "." + id + ".title";
@@ -124,9 +126,7 @@ public class NomadsDelightAdvancementProvider implements AdvancementProvider.Adv
         adv(saver, makeShubatOrQymyz, "get_drunk",
                 NomadsDelightItems.QUMYZ_BUCKET.get(), AdvancementType.GOAL, true, null,
                 AdvancementRequirements.Strategy.AND,
-                b -> b.addCriterion("has_confusion", EffectsChangedTrigger.TriggerInstance.hasEffects(
-                        MobEffectsPredicate.Builder.effects().and(MobEffects.CONFUSION)
-                ))
+                b -> b.addCriterion(DRUNK_CRITERION, CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance()))
         );
 
         adv(saver, makeChurn, "make_butter",

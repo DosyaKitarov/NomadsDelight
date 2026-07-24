@@ -1,13 +1,8 @@
 {
   "parent": "nomads_delight:make_shubat_or_qymyz",
   "criteria": {
-    "has_confusion": {
-      "conditions": {
-        "effects": {
-          "minecraft:nausea": {}
-        }
-      },
-      "trigger": "minecraft:effects_changed"
+    "get_drunk": {
+      "trigger": "minecraft:impossible"
     }
   },
   "display": {
@@ -26,7 +21,7 @@
   },
   "requirements": [
     [
-      "has_confusion"
+      "get_drunk"
     ]
   ],
   "sends_telemetry_event": true

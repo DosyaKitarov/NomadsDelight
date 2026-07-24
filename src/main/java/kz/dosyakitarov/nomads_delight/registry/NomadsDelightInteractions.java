@@ -9,6 +9,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.animal.camel.Camel;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
@@ -18,10 +19,15 @@ import net.minecraft.world.item.Items;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @EventBusSubscriber(modid = "nomads_delight")
 public class NomadsDelightInteractions {
+
+    private static final Logger log = LoggerFactory.getLogger(NomadsDelightInteractions.class);
 
     @SubscribeEvent
     public static void milkHorse(PlayerInteractEvent.EntityInteract event) {
@@ -69,17 +75,61 @@ public class NomadsDelightInteractions {
 
     @SubscribeEvent
     public static void onBonk(LivingDeathEvent event) {
+        try {
+            if (event.getEntity().level().isClientSide()) {
+                return;
+            }
+
+            if (!(event.getSource().getEntity() instanceof ServerPlayer player)) {
+                return;
+            }
+
+            ItemStack weapon = event.getSource().getWeaponItem();
+
+            if (weapon == null || weapon.isEmpty() || !weapon.is(NomadsDelightItems.ROLLING_PIN.get())) {
+                return;
+            }
+
+            MinecraftServer server = player.getServer();
+            if (server == null) {
+                return;
+            }
+
+            AdvancementHolder advancement = server.getAdvancements().get(
+                    ResourceLocation.fromNamespaceAndPath(
+                            Nomads_delight.MODID,
+                            "bonk"
+                    )
+            );
+
+            if (advancement != null) {
+                player.getAdvancements().award(
+                        advancement,
+                        NomadsDelightAdvancementProvider.BONK_CRITERION
+                );
+            }
+        } catch (Exception e) {
+            log.error("Error occurred while awarding advancement", e);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onFinishDrinking(LivingEntityUseItemEvent.Finish event) {
         if (event.getEntity().level().isClientSide()) {
             return;
         }
 
-        if (!(event.getSource().getEntity() instanceof ServerPlayer player)) {
+        if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
         }
 
-        ItemStack weapon = event.getSource().getWeaponItem();
+        ItemStack item = event.getItem();
+        if (!item.is(NomadsDelightItems.QUMYZ_BUCKET.get())
+                && !item.is(NomadsDelightItems.SHUBAT_BUCKET.get())) {
+            return;
+        }
 
-        if (weapon.isEmpty() || !weapon.is(NomadsDelightItems.ROLLING_PIN.get())) {
+        if (!player.hasEffect(MobEffects.CONFUSION)) {
             return;
         }
 
@@ -89,17 +139,12 @@ public class NomadsDelightInteractions {
         }
 
         AdvancementHolder advancement = server.getAdvancements().get(
-                ResourceLocation.fromNamespaceAndPath(
-                        Nomads_delight.MODID,
-                        "bonk"
-                )
+                ResourceLocation.fromNamespaceAndPath(Nomads_delight.MODID, "get_drunk")
         );
 
         if (advancement != null) {
-            player.getAdvancements().award(
-                    advancement,
-                    NomadsDelightAdvancementProvider.BONK_CRITERION
-            );
+            player.getAdvancements().award(advancement, NomadsDelightAdvancementProvider.DRUNK_CRITERION);
         }
     }
+
 }

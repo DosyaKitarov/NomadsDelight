@@ -35,7 +35,6 @@ public class Nomads_delight {
     @SuppressWarnings("unused")
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> NOMADS_DELIGHT_TAB = CREATIVE_MODE_TABS.register("nomads_delight_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.nomads_delight"))
-            .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> NomadsDelightItems.BESHBARMAK.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(NomadsDelightBlocks.BUTTER_CHURN.get());
@@ -57,7 +56,7 @@ public class Nomads_delight {
 
                 output.accept(NomadsDelightItems.ROLLED_DOUGH.get());
                 output.accept(NomadsDelightItems.ZHAYMA.get());
-                
+
                 output.accept(NomadsDelightItems.RAW_SAMSA.get());
                 output.accept(NomadsDelightItems.SAMSA.get());
 
