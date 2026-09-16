@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "filled=false,half=lower": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "filled=false,half=upper": {
+      "model": "nomads_delight:block/churn_top"
+    },
+    "filled=true,half=lower": {
+      "model": "nomads_delight:block/churn_bottom"
+    },
+    "filled=true,half=upper": {
+      "model": "nomads_delight:block/churn_up_top_filled"
+    }
+  }
+}

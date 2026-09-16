@@ -1,0 +1,55 @@
+plugins {
+    id 'multiloader-loader'
+    id 'fabric-loom'
+}
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.layered {
+        officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${parchment_minecraft}:${parchment_version}@zip")
+    }
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
+
+    // Farmer's Delight Refabricated: the Fabric port of Farmer's Delight. It keeps the
+    // original's mod id ("farmersdelight"), packages and registry names, so no code
+    // changes are needed - but it is a distinct artifact from a different maven.
+    modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
+        exclude(group: 'net.fabricmc') // per Refabricated's own addon-dev instructions
+    }
+
+    // JEI: the plugin class lives in common against the loader-agnostic API.
+    modCompileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    modCompileOnly "mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}"
+    modLocalRuntime "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
+}
+
+def commonAw = project(':common').file("src/main/resources/${mod_id}.accesswidener")
+
+loom {
+    def aw = commonAw
+    if (aw.exists()) {
+        accessWidenerPath.set(aw)
+    }
+    runs {
+        client {
+            client()
+            setConfigName('Fabric Client')
+            ideConfigGenerated(true)
+            runDir('runs/client')
+        }
+        server {
+            server()
+            setConfigName('Fabric Server')
+            ideConfigGenerated(true)
+            runDir('runs/server')
+        }
+    }
+}
+
+processResources {
+    // NeoForge-only data must not ship in the Fabric jar: Global Loot Modifier JSONs are
+    // meaningless on Fabric - the same injections are applied via LootTableEvents instead.
+    exclude('data/neoforge/**')
+    exclude('data/nomads_delight/loot_modifiers/**')
+}

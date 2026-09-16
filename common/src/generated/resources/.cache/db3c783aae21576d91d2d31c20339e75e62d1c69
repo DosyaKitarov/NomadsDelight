@@ -1,0 +1,5 @@
+// 1.21.1	2026-08-13T12:08:14.503561	Global Loot Modifiers : nomads_delight
+22192d93c9d6b4621356c9161a3e8e5cb1a5502e data/neoforge/loot_modifiers/global_loot_modifiers.json
+9fcf53f2f69647e133378c105794a476d33c0087 data/nomads_delight/loot_modifiers/add_cooked_horse_meat_from_horses.json
+d7b198a0b9a1e64c346c0741d256df2f9fbd9557 data/nomads_delight/loot_modifiers/add_horse_intestines_from_horses.json
+22c78e764af667c3ccdf5d3054841935f693245c data/nomads_delight/loot_modifiers/add_raw_horse_meat_from_horses.json

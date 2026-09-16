@@ -1,0 +1,25 @@
+{
+    "type": "farmersdelight:cooking",
+    "experience": 1.0,
+    "ingredients": [
+        [
+            {
+                "item": "minecraft:mutton"
+            },
+            {
+                "item": "minecraft:beef"
+            }
+        ],
+        {
+            "item": "farmersdelight:rice"
+        },
+        {
+            "item": "nomads_delight:horse_intestines"
+        }
+    ],
+    "recipe_book_tab": "meals",
+    "result": {
+        "count": 1,
+        "id": "nomads_delight:asip"
+    }
+}

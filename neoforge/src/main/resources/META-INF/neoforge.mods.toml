@@ -1,0 +1,51 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "${neoforge_loader_version_range}" #mandatory
+license = "${license}"
+issueTrackerURL = "https://github.com/DosyaKitarov/NomadsDelight/issues" #optional
+
+[[mods]] #mandatory
+modId = "${mod_id}" #mandatory
+version = "${version}" #mandatory
+displayName = "${mod_name}" #mandatory
+displayURL = "https://github.com/DosyaKitarov/NomadsDelight" #optional
+logoFile = "nomads_delight.png" #optional
+credits = "${credits}" #optional
+authors = "${mod_author}" #optional
+
+description = '''
+A Farmer's Delight addon that brings the rich culinary traditions of the steppe nomads to your Minecraft kitchen.
+
+Adds 50+ traditional dishes and ingredients, 19 new advancements, and two new functional blocks - the Curd Bag storage pouch and the Churn dairy churn - both built to integrate with Farmer's Delight's cooking and farming systems.
+
+Saddle up, fire up the cooking pot, and taste the spirit of the steppes. As bolsyn!
+'''
+
+[[dependencies.${mod_id}]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoforge_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+# The original Farmer's Delight: provides the Comfort/Nourishment effects, ingredients
+# and the cooking pot / cutting board recipe types this addon builds on.
+modId = "farmersdelight"
+type = "required"
+versionRange = "${farmersdelight_version_range}"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "jei"
+type = "optional"
+versionRange = "[19,)"
+ordering = "AFTER"
+side = "CLIENT"
