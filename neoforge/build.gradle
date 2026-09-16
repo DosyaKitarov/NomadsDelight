@@ -1,0 +1,100 @@
+plugins {
+    id 'multiloader-loader'
+    id 'net.neoforged.moddev'
+}
+
+// Resolved at script level: inside the neoForge/runs closures, Gradle 9 routes
+// project(':common') to the dependency factory instead of Project.project.
+def commonMain = project(':common').file('src/main/resources/')
+def commonGenerated = project(':common').file('src/generated/resources/')
+def commonLang = project(':common').file('src/main/resources/assets/nomads_delight/lang')
+def commonAt = project(':common').file('src/main/resources/META-INF/accesstransformer.cfg')
+
+neoForge {
+    version = neoforge_version
+    // Automatically enable neoforge AccessTransformers if the file exists
+    def at = commonAt
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+    runs {
+        configureEach {
+            systemProperty('neoforge.enabledGameTestNamespaces', mod_id)
+            ideName = "NeoForge ${it.name.capitalize()} (${project.path})" // Unify the run config names with fabric
+        }
+        client {
+            client()
+        }
+        data {
+            data()
+
+            // DataGen can be run with "./gradlew :neoforge:runData".
+            // Output goes to the common module so every loader packages the shared data;
+            // existing resources (textures, base models, lang) also live in common.
+            programArguments.addAll '--mod', project.mod_id, '--all',
+                    '--output', commonGenerated.getAbsolutePath(),
+                    '--existing', commonMain.getAbsolutePath()
+
+            // Lets the merging language provider find the handwritten lang files regardless
+            // of the datagen working directory (see NomadsDelightMergingLanguageProvider).
+            systemProperty 'nomads_delight.lang.dir', commonLang.getAbsolutePath()
+        }
+        server {
+            server()
+        }
+    }
+    mods {
+        "${mod_id}" {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    // Original Farmer's Delight (NeoForge builds only exist for this loader on 1.21.1)
+    implementation farmersdelight_neoforge
+
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+
+    runtimeOnly "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+    runtimeOnly "curse.maven:appleskin-248787:5586600"
+}
+
+// FD's cooking-pot recipes serialize multi-item ingredients with NeoForge's compound
+// ingredient codec ("type": "neoforge:compound"). The vanilla array form parses on every
+// loader (NeoForge included), so rewrite datagen output after each run to keep the shared
+// data cross-platform.
+def normalizeGeneratedRecipes = tasks.register('normalizeGeneratedRecipes') {
+    def dataDir = new File(commonGenerated, 'data')
+    inputs.dir(dataDir)
+    outputs.dir(dataDir)
+    doLast {
+        def slurper = new groovy.json.JsonSlurper()
+        def normalize
+        normalize = { node ->
+            if (node instanceof Map) {
+                if (node['type'] == 'neoforge:compound' && node.containsKey('children')) {
+                    return node['children'].collect { normalize(it) }
+                }
+                return node.collectEntries { k, v -> [(k): normalize(v)] }
+            }
+            if (node instanceof List) {
+                return node.collect { normalize(it) }
+            }
+            return node
+        }
+        dataDir.eachFileRecurse(groovy.io.FileType.FILES) { file ->
+            if (file.name.endsWith('.json') && file.text.contains('neoforge:compound')) {
+                def json = normalize(slurper.parse(file))
+                file.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(json)) + '\n'
+                logger.lifecycle("normalized ingredients in ${file}")
+            }
+        }
+    }
+}
+tasks.matching { it.name == 'runData' }.configureEach { finalizedBy(normalizeGeneratedRecipes) }

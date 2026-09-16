@@ -1,0 +1,11 @@
+// 1.21.1	2026-09-16T21:08:23.327256	Block States: nomads_delight
+ac20717e257259c3ab08bbbe5c4a7919d685d751 assets/nomads_delight/blockstates/butter_churn.json
+ce12e7b70e8f890ea8937d6764b71586b7372e13 assets/nomads_delight/blockstates/curd_bag.json
+3f50f7df3a9e2fff891fa102714b0d4359495726 assets/nomads_delight/models/block/churn_bottom.json
+952a025ac5e45180f88d684fbf7d4466bd306bd2 assets/nomads_delight/models/block/churn_top.json
+9c4da43c031705bc1786490a1026632119ce0e6f assets/nomads_delight/models/block/churn_up_top_filled.json
+8edc0498761d3c9b596dca2a8d96a6710af6a43b assets/nomads_delight/models/block/curd_bag_empty.json
+647cee03c8aa81dc17d2a2b9e43c5b2bfb6623fd assets/nomads_delight/models/block/curd_bag_full.json
+7a7da8b405eafa1469bae2a1497b4c43e98772a9 assets/nomads_delight/models/block/curd_bag_ready.json
+5aea5dffa3e13a758aa4c22b27532e9d07167ed4 assets/nomads_delight/models/item/butter_churn.json
+c88ac8d8c40fa801bf18bd11380a828aa9ce0978 assets/nomads_delight/models/item/curd_bag.json

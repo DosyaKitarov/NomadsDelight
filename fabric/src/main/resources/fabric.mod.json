@@ -1,0 +1,42 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "https://github.com/DosyaKitarov/NomadsDelight",
+        "sources": "https://github.com/DosyaKitarov/NomadsDelight",
+        "issues": "https://github.com/DosyaKitarov/NomadsDelight/issues"
+    },
+    "license": "${license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "kz.dosyakitarov.nomads_delight.NomadsDelightFabric"
+        ],
+        "client": [
+            "kz.dosyakitarov.nomads_delight.client.NomadsDelightFabricClient"
+        ],
+        "jei_mod_plugin": [
+            "kz.dosyakitarov.nomads_delight.integration.jei.NomadsDelightJEIPlugin"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}",
+        "java": ">=${java_version}",
+        "farmersdelight": "*"
+    },
+    "suggests": {
+        "jei": "*"
+    },
+    "custom": {
+        "nomads_delight:comment": "farmersdelight on Fabric is provided by Farmer's Delight Refabricated, which keeps the original mod id."
+    }
+}

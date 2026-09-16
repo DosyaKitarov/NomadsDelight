@@ -1,0 +1,52 @@
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    // Automatically enable AccessTransformers if the file exists
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
+}
+
+dependencies {
+    // JEI integration lives in common: the plugin only touches the loader-agnostic JEI API.
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+}
+
+// Datagen (run from the :neoforge module) writes shared output here so every loader packages it.
+sourceSets.main.resources.srcDir 'src/generated/resources'
+
+processResources {
+    // Language providers merge the handwritten lang files into the generated ones,
+    // so on duplicate paths the generated file must win (it is listed first below).
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    // datagen bookkeeping, not game data
+    exclude('.cache/**')
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    // Generated resources are published first so they win over src/main/resources
+    // when loader modules copy both with DuplicatesStrategy.EXCLUDE.
+    commonResources file('src/generated/resources')
+    commonResources file('src/main/resources')
+}

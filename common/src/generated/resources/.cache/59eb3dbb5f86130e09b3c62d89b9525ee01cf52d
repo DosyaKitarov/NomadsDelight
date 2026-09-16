@@ -1,0 +1,4 @@
+// 1.21.1	2026-08-13T12:08:14.502978	Loot Tables
+97e4975061c3e6c76859a6a67498b6cb54ce6f39 data/nomads_delight/loot_table/inject/cooked_horse_meat.json
+2b7f99e8666ea2599757db9f1c567c2c968b3fe7 data/nomads_delight/loot_table/inject/horse_intestines.json
+db2c75aa81949553f7f8f31c5f01efc692f5a2f2 data/nomads_delight/loot_table/inject/raw_horse_meat.json
